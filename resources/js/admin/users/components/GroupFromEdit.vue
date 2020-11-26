@@ -35,7 +35,7 @@
                         ></v-select>
                     </v-flex>
                     <v-flex xs12 sm4>
-                        <v-btn @click="addSpecialPermission()" class="primary lighten-1" dark>
+                        <v-btn @click="addSpecialPermission()" class="specialPrimary lighten-1" dark>
                             Add Permission
                             <v-icon right>add</v-icon>
                         </v-btn>
@@ -58,7 +58,7 @@
                         </div>
                     </v-flex>
                     <v-flex xs12>
-                        <v-btn @click="save()" :disabled="!valid" color="primary" dark>Update</v-btn>
+                        <v-btn @click="save()" :disabled="!valid" color="lighten" dark>Update</v-btn>
                     </v-flex>
                 </v-layout>
             </v-container>

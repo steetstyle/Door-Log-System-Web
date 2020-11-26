@@ -1,6 +1,6 @@
 <template>
     <div class="page_wrap_vue">
-        <v-tabs color="primary" v-model="active">
+        <v-tabs color="lighten" v-model="active">
 
             <v-tab class="white--text" key="files" href="#files" ripple>
                 Files

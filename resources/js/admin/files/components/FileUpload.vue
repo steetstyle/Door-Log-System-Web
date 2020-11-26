@@ -15,7 +15,7 @@
                             ></v-select>
                         </v-flex>
                         <v-flex xs12 sm4>
-                            <v-btn @click="clear()" block class="primary lighten-1" dark>
+                            <v-btn @click="clear()" block class="specialPrimary lighten-1" dark>
                                 Clear
                             </v-btn>
                         </v-flex>

@@ -5,16 +5,16 @@
         <v-card class="pt-3">
             <div class="d-flex flex-row">
                 <div class="flex-grow-1 pa-2">
-                    <v-btn @click="$router.push({name:'users.create'})" class="primary lighten-1" dark>
+                    <v-btn @click="$router.push({name:'users.create'})" class="specialPrimary lighten-1" dark>
                         New User
                         <v-icon right dark>add</v-icon>
                     </v-btn>
                 </div>
                 <div class="flex-grow-1 pa-2">
-                    <v-btn @click="$router.push({name:'users.groups.list'})" class="primary lighten-1 float-right" dark>
+                    <v-btn @click="$router.push({name:'users.groups.list'})" class="specialPrimary lighten-1 float-right" dark>
                         Manage Groups <v-icon right dark>group</v-icon>
                     </v-btn>
-                    <v-btn @click="$router.push({name:'users.permissions.list'})" class="primary lighten-1 float-right mr-2" dark>
+                    <v-btn @click="$router.push({name:'users.permissions.list'})" class="specialPrimary lighten-1 float-right mr-2" dark>
                         Manage Permissions <v-icon right dark>vpn_key</v-icon>
                     </v-btn>
                 </div>

@@ -8,7 +8,7 @@
                     <v-text-field prepend-icon="search" label="Filter By Name" v-model="filters.name"></v-text-field>
                 </div>
                 <div class="flex-grow-1 text-right">
-                    <v-btn @click="showDialog('file_group_add')" dark class="primary lighten-1">
+                    <v-btn @click="showDialog('file_group_add')" dark class="specialPrimary lighten-1">
                         New File Group
                         <v-icon right>mdi-add</v-icon>
                     </v-btn>

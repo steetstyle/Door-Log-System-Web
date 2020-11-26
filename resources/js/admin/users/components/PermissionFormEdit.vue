@@ -23,7 +23,7 @@
                             <v-textarea label="Description" v-model="description" :rules="descriptionRules"></v-textarea>
                         </v-flex>
                         <v-flex xs12>
-                            <v-btn @click="save()" :loading="isLoading" :disabled="!valid || isLoading" color="primary" dark>Save</v-btn>
+                            <v-btn @click="save()" :loading="isLoading" :disabled="!valid || isLoading" color="lighten" dark>Save</v-btn>
                         </v-flex>
                     </v-layout>
                 </v-container>

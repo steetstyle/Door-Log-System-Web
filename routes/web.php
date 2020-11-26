@@ -14,6 +14,7 @@
 Route::get('/','Front\\HomeController@index')->name('front.home');
 Route::get('files/{id}/preview','Front\\FileController@filePreview')->name('front.file.preview');
 Route::get('files/{id}/download','Front\\FileController@fileDownload')->name('front.file.download');
+Route::post('device/log/add','Admin\\CardLoginController@add_device_log')->name('device.log.add');
 
 Auth::routes();
 
@@ -22,7 +23,7 @@ Auth::routes();
 // for demo purpose to prevent viewers to modify data on a live demo site
 
 // admin
-Route::prefix('admin')->namespace('Admin')->middleware(['auth','demo'])->group(function()
+Route::prefix('admin')->namespace('Admin')->middleware(['auth'])->group(function()
 {
     // single page
     Route::get('/', 'SinglePageController@displaySPA')->name('admin.spa');
@@ -33,4 +34,8 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth','demo'])->group(f
     Route::resource('permissions','PermissionController');
     Route::resource('files','FileController');
     Route::resource('file-groups','FileGroupController');
+    Route::resource('branches','BranchController');
+    Route::resource('branchuser','BranchUserController');
+    Route::resource('cardlogin','CardLoginController');
+    Route::resource('cards','CardController');
 });

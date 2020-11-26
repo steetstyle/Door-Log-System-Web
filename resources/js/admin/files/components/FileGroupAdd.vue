@@ -14,7 +14,7 @@
                             <v-textarea label="Group Description" v-model="description" :rules="descriptionRules"></v-textarea>
                         </v-flex>
                         <v-flex xs12>
-                            <v-btn @click="save()" :disabled="!valid" color="primary">Save</v-btn>
+                            <v-btn @click="save()" :disabled="!valid" color="lighten">Save</v-btn>
                         </v-flex>
                     </v-layout>
                 </v-container>

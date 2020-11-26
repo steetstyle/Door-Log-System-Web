@@ -21,8 +21,9 @@
     "vue": "^2.6.0"
   },
   "dependencies": {
+    "css-loader": "^1.0.0",
     "dropzone": "^5.2.0",
-    "moment": "^2.21.0",
+    "moment": "^2.29.1",
     "vue-progressbar": "^0.7.5",
     "vue-router": "^3.0.1",
     "vue-spinner": "^1.0.2",

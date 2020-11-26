@@ -8,7 +8,7 @@
                     <v-text-field prepend-icon="search" label="Filter By Name" v-model="filters.name"></v-text-field>
                 </div>
                 <div class="flex-grow-1 pa-2 text-right">
-                    <v-btn @click="$router.push({name:'users.groups.create'})" class="primary lighten-1" dark>
+                    <v-btn @click="$router.push({name:'users.groups.create'})" class="specialPrimary lighten-1" dark>
                         New Group
                         <v-icon right>add</v-icon>
                     </v-btn>
