@@ -39,6 +39,7 @@ Vue.use(VueProgressBar, {
 
 // global component registrations here
 Vue.component("moon-loader", require("vue-spinner/src/MoonLoader.vue"));
+Vue.component("fc-body-card", require("./timeline/components/EventCard.vue"));
 
 // app
 import router from "./router";

@@ -1,34 +1,9 @@
 <template>
     <div class="col-md-12">
-        <full-calendar :events="fcEvents" locale="en" width="100%"></full-calendar>
+        <full-calendar :events="fcEvents"  locale="en" ></full-calendar>
     </div>
 </template>
-<style scoped>
-    .comp-full-calendar{
-        max-width: 100%;
-        min-height: 100%;
-    }
-    .event-item.toolate{
-        background-color:rgb(143, 90, 90)!important;
-        height: 50px;
-    }
-    .event-item.firstlogin{
-        background-color:rgb(99, 177, 99)!important;
-        height: 50px;
-    }
-    .event-item.exit{
-        background-color:red!important;
-        height: 50px;
-    }
-    .event-item.login{
-        background-color:green!important;
-        height: 50px;
-    }
-    .event-item.undetermined{
-        background-color:rgb(114, 110, 110)!important;
-        height: 50px;
-    }
-</style>
+
 <script>
     import fullCalendar from 'vue-fullcalendar'
     export default {
@@ -57,7 +32,7 @@
                 pagination: {
                     itemsPerPage: 1000
                 },
-                items: [],
+                items: [] 
             }
         },
       
@@ -131,7 +106,45 @@
                 let splittedTime = time.split(':');
                 return new Date(dt.getTime() +  splittedTime[0]*60*60000 + splittedTime[1]*60000);
             },
+            dayClick (day, jsEvent) {
+                console.log('dayClick', day, jsEvent)
+            },
         }
     }
 </script>
 
+<style >
+    .comp-full-calendar{
+        max-width: 100%;
+        min-height: 100%;
+    }
+    
+    .toolate{
+        background-color:rgb(143, 90, 90)!important;
+        height: 50px;
+    }
+    
+    .firstlogin{
+        background-color:rgb(99, 177, 99)!important;
+        height: 50px;
+    }
+    
+    .exit{
+        background-color:red!important;
+        height: 50px;
+    }
+    
+    .login{
+        background-color:green!important;
+        height: 50px;
+    }
+    
+    .undetermined{
+        background-color:rgb(114, 110, 110)!important;
+        height: 50px;
+    }
+
+    .day-cell{
+        min-height:200px!important;
+    }
+</style>

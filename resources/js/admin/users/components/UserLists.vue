@@ -78,12 +78,16 @@
                                 <v-btn @click="trash(item)" class="ma-1" small outlined icon color="red">
                                     <v-icon small>mdi-delete</v-icon>
                                 </v-btn>
+                                <v-btn @click="$router.push({name:'timeline.user',params:{name: item.name}})" class="ma-1" small outlined icon color="info">
+                                    <v-icon small>mdi-pencil</v-icon>
+                                </v-btn>
                             </div>
                         </td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.email }}</td>
                         <td>
                             <v-btn small @click="showDialog('user_permissions',item.permissions)" outlined rounded color="grey" dark>Show</v-btn>
+                            
                         </td>
                         <td>
                             <v-chip v-for="group in item.groups" :key="group.id" outlined color="grey" text-color="white">
