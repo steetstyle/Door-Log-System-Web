@@ -63,7 +63,7 @@ class CardLoginController extends AdminController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function add_device_log(){
+    public function add_device_log(Request $request){
         $validate = validator($request->all(),[
             'key' => 'required',
             'place' => 'required',
@@ -74,8 +74,8 @@ class CardLoginController extends AdminController
         /** @var CardLogin $cardLogin */
         $cardLogin = $this->cardLoginRepository->add_device_log($request->all());
 
-        if(!$branch) return $this->sendResponseBadRequest("Failed create.");
+        if(!$cardLogin) return $this->sendResponseBadRequest("Failed create.");
         
-        return $this->sendResponseCreated($branch);
+        return $this->sendResponseCreated($cardLogin);
     }
 }

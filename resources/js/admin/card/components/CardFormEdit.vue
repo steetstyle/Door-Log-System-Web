@@ -5,7 +5,7 @@
                 <v-icon>list</v-icon> Edit Card
             </v-card-title>
             <v-divider class="mb-2"></v-divider>
-            <v-form v-model="valid" ref="cardFormAdd" lazy-validation>
+            <v-form v-model="valid" ref="cardFormEdit" lazy-validation>
                 <v-container grid-list-md>
                 <v-layout row wrap>
                     <v-flex xs12 sm12>
@@ -90,9 +90,7 @@
 
             const self = this;
 
-            this.loadBranches(()=>{});
-            this.loadUsers(()=>{});
-            this.loadCard(()=>{});
+            this.loadBranches(()=>{this.loadUsers(()=>{this.loadCard(()=>{})})});
 
             this.$store.commit('setBreadcrumbs',[
                 {label:'Cards',to:{name:'cards.list'}},
@@ -181,8 +179,8 @@
                     per_page: self.pagination.users_itemsPerPage
                 };
 
-                axios.get('/admin/cards/'+self.propKey,{params: params}).then(function(response) {
-                    let card = response.data.data; 
+                axios.get('/admin/cards/'+self.propKey, params).then(function(response) {
+                    let card =  response.data.data ;
                     self.key = card.key;
                     self.selectedBranch = card.branch_id;
                     self.selectedUser = card.user_id;

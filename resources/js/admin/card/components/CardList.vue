@@ -41,10 +41,11 @@
                     <tr v-for="item in items" :key="item.id">
                         <td>
                             <div class="ml-n1 my-1 d-flex justify-space-between align-content-space-around flex-wrap">
-                                <v-btn @click="$router.push({name:'cards.edit',params:{key: item.key}})" class="ma-1" small outlined icon color="info">
+                                <v-btn @click="item.user != null ? $router.push({name:'cards.edit',params:{key: item.key}}) : $router.push({name:'cards.create',params:{key: item.key}})" class="ma-1" small outlined icon color="info">
                                     <v-icon small>mdi-pencil</v-icon>
+                                
                                 </v-btn>
-                                      <v-btn @click="trash(item)" class="ma-1" small outlined icon color="red">
+                                <v-btn @click="trash(item)" class="ma-1" small outlined icon color="red">
                                     <v-icon small>mdi-delete</v-icon>
                                 </v-btn>
                             </div>

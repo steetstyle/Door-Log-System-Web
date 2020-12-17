@@ -124,10 +124,11 @@ export default {
 				end_date: "",
 				branchName: "",
 				page: 0,
-				per_page: 0
+				per_page: 10
 			};
 			axios.get("/admin/cardlogin", params).then(function(response) {
-				self.logs = response.data.data;
+				self.logs = params.per_page ? response.data.data.slice(response.data.data.total,params.per_page) : response.data.data;
+
 				(cb || Function)();
 			});
         },
@@ -138,11 +139,12 @@ export default {
                 let params = {
                     key: '',
                     page: 0,
-                    per_page: 0
+                    per_page: 10
                 };
 
                 axios.get('/admin/cards',{params: params}).then(function(response) {
-                    self.cards = response.data.data;
+					self.cards = params.per_page ? response.data.data.slice(response.data.data.total,params.per_page) : response.data.data;
+
                     (cb || Function)();
                 });
             },

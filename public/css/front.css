@@ -507,3 +507,24 @@ a {
   z-index: 500 !important;
 }
 
+.primary .red-lighten-1 {
+  background-color: #b33333 !important;
+  border-color: #ffffff !important;
+}
+
+.borderlessCard {
+  border-width: 0px;
+  border-radius: 0px;
+  outline: none !important;
+  text-decoration: none !important;
+  -webkit-transition-property: unset !important;
+  transition-property: unset !important;
+  -webkit-box-shadow: unset !important;
+          box-shadow: unset !important;
+}
+
+.v-expansion-panel::before {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+

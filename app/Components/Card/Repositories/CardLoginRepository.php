@@ -13,6 +13,8 @@ use App\Components\User\Models\User;
 
 use App\Components\Core\BaseRepository;
 use App\Components\Card\Models\CardLogin;
+use App\Components\Setting\Models\Setting;
+use App\Components\Branch\Models\Branch;
 use App\Components\Core\Utilities\Helpers;
 use Illuminate\Support\Arr;
 
@@ -73,9 +75,16 @@ class CardLoginRepository extends BaseRepository
         if(!$branch) return false;
 
         $payload = [];
+        $setting = Setting::all()->first();
+        if($setting == null){
+            $setting = Setting::create();
+        }
 
         $payload['branch_id'] = $branch->id;
         $payload['key'] = $params['key'];
+        $payload['login_time'] = $setting->login_time;
+        $payload['max_late_time'] = $setting->max_late_time;
+        $payload['exit_time'] = $setting->exit_time;
         $cardLogin = $this->create($payload);
         
         return $cardLogin;

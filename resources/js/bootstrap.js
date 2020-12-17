@@ -1,7 +1,6 @@
-
-window._ = require('lodash');
-window.moment = require('moment');
-window.Dropzone = require('dropzone');
+window._ = require("lodash");
+window.moment = require("moment");
+window.Dropzone = require("dropzone");
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -10,9 +9,9 @@ window.Dropzone = require('dropzone');
  */
 
 try {
-    window.$ = window.jQuery = require('jquery');
+    window.$ = window.jQuery = require("jquery");
 
-    require('bootstrap-sass');
+    require("bootstrap-sass");
 } catch (e) {}
 
 /**
@@ -21,9 +20,9 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require('axios');
+window.axios = require("axios");
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -35,9 +34,11 @@ let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
     window._token = token.content;
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    window.axios.defaults.headers.common["X-CSRF-TOKEN"] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error(
+        "CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token"
+    );
 }
 
 /**

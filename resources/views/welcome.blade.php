@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Log Control System</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -77,7 +77,7 @@
                 <a href="{{ url('/admin') }}">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}">Login</a>
-                    <a href="{{ route('register') }}">Register</a>
+                    <!-- <a href="{{ route('register') }}">Register</a> -->
                     @endauth
         </div>
     @endif
@@ -88,8 +88,7 @@
         </div>
 
         <div class="links">
-            <h1>Laravel <span style="color: #F4D8D8">Starter Kit</span></h1>
-            <h4>Powered by VueJS + Material Design</h4>
+            <h1>Log Control System<span style="color: #F4D8D8"></span></h1>
         </div>
     </div>
 </div>

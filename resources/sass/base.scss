@@ -70,14 +70,14 @@ a {
 }
 
 .borderlessCard {
-    border-width:0px;
+    border-width: 0px;
     border-radius: 0px;
-    outline: none!important; 
-    text-decoration: none!important; 
-    transition-property: unset!important; 
+    outline: none!important;
+    text-decoration: none!important;
+    transition-property: unset!important;
     box-shadow: unset!important;
-  }
+}
 
-  .v-expansion-panel::before {
+.v-expansion-panel::before {
     box-shadow: none !important;
- }
+}

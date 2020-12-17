@@ -1,7 +1,8 @@
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
+ * building robust, powerful web applications using Vue and Log Control System
+.
  */
 
 // vendor
@@ -24,16 +25,16 @@ Vue.use(Vuetify);
 // can change colors here to fit on your needs or match
 // your theming above
 Vue.use(VueProgressBar, {
-  color: "#FFFFFF",
-  failedColor: "#b71c1c",
-  thickness: "5px",
-  transition: {
-    speed: "0.2s",
-    opacity: "0.6s",
-    termination: 300,
-  },
-  autoRevert: true,
-  inverse: false,
+    color: "#FFFFFF",
+    failedColor: "#b71c1c",
+    thickness: "5px",
+    transition: {
+        speed: "0.2s",
+        opacity: "0.6s",
+        termination: 300,
+    },
+    autoRevert: true,
+    inverse: false,
 });
 
 // global component registrations here
@@ -52,112 +53,112 @@ Vue.use(formatters);
 Vue.use(eventBus);
 
 const admin = new Vue({
-  vuetify: new Vuetify({
-    theme: {
-      dark: false,
-      themes: {
-        dark: {
-          primary: "#FFFFFF",
-          info: "#4c86b5",
-          success: "#17b535",
-          secondary: "#b0bec5",
-          accent: "#8c9eff",
-          error: "#b71c1c",
+    vuetify: new Vuetify({
+        theme: {
+            dark: false,
+            themes: {
+                dark: {
+                    primary: "#FFFFFF",
+                    info: "#4c86b5",
+                    success: "#17b535",
+                    secondary: "#b0bec5",
+                    accent: "#8c9eff",
+                    error: "#b71c1c",
+                },
+            },
         },
-      },
-    },
-    icons: {
-      iconfont: "mdi",
-    },
-  }),
-  el: "#admin",
-  eventBus,
-  router,
-  store,
-  data: () => ({
-    drawer: true,
-  }),
-  mounted() {
-    const self = this;
+        icons: {
+            iconfont: "mdi",
+        },
+    }),
+    el: "#admin",
+    eventBus,
+    router,
+    store,
+    data: () => ({
+        drawer: true,
+    }),
+    mounted() {
+        const self = this;
 
-    // progress bar top
-    AxiosAjaxDetct.init(
-      () => {
-        self.$Progress.start();
-      },
-      () => {
-        self.$Progress.finish();
-      }
-    );
-  },
-  computed: {
-    getBreadcrumbs() {
-      return store.getters.getBreadcrumbs;
+        // progress bar top
+        AxiosAjaxDetct.init(
+            () => {
+                self.$Progress.start();
+            },
+            () => {
+                self.$Progress.finish();
+            }
+        );
     },
-    showLoader() {
-      return store.getters.showLoader;
-    },
-    showSnackbar: {
-      get() {
-        return store.getters.showSnackbar;
-      },
-      set(val) {
-        if (!val) store.commit("hideSnackbar");
-      },
-    },
-    snackbarMessage() {
-      return store.getters.snackbarMessage;
-    },
-    snackbarColor() {
-      return store.getters.snackbarColor;
-    },
-    snackbarDuration() {
-      return store.getters.snackbarDuration;
-    },
+    computed: {
+        getBreadcrumbs() {
+            return store.getters.getBreadcrumbs;
+        },
+        showLoader() {
+            return store.getters.showLoader;
+        },
+        showSnackbar: {
+            get() {
+                return store.getters.showSnackbar;
+            },
+            set(val) {
+                if (!val) store.commit("hideSnackbar");
+            },
+        },
+        snackbarMessage() {
+            return store.getters.snackbarMessage;
+        },
+        snackbarColor() {
+            return store.getters.snackbarColor;
+        },
+        snackbarDuration() {
+            return store.getters.snackbarDuration;
+        },
 
-    // dialog
-    showDialog: {
-      get() {
-        return store.getters.showDialog;
-      },
-      set(val) {
-        if (!val) store.commit("hideDialog");
-      },
+        // dialog
+        showDialog: {
+            get() {
+                return store.getters.showDialog;
+            },
+            set(val) {
+                if (!val) store.commit("hideDialog");
+            },
+        },
+        dialogType() {
+            return store.getters.dialogType;
+        },
+        dialogTitle() {
+            return store.getters.dialogTitle;
+        },
+        dialogMessage() {
+            return store.getters.dialogMessage;
+        },
+        dialogIcon() {
+            return store.getters.dialogIcon;
+        },
     },
-    dialogType() {
-      return store.getters.dialogType;
-    },
-    dialogTitle() {
-      return store.getters.dialogTitle;
-    },
-    dialogMessage() {
-      return store.getters.dialogMessage;
-    },
-    dialogIcon() {
-      return store.getters.dialogIcon;
-    },
-  },
-  methods: {
-    menuClick(routeName, routeType) {
-      let rn = routeType || "vue";
+    methods: {
+        menuClick(routeName, routeType) {
+            let rn = routeType || "vue";
 
-      if (rn === "vue") {
-        this.$router.push({ name: routeName });
-      }
-      if (rn === "full_load") {
-        window.location.href = routeName;
-      }
+            if (rn === "vue") {
+                this.$router.push({ name: routeName });
+            }
+            if (rn === "full_load") {
+                window.location.href = routeName;
+            }
+        },
+        clickLogout(logoutUrl, afterLogoutRedirectUrl) {
+            axios.post(logoutUrl).then((r) => {
+                window.location.href = afterLogoutRedirectUrl;
+            });
+        },
+        dialogOk() {
+            store.commit("dialogOk");
+        },
+        dialogCancel() {
+            store.commit("dialogCancel");
+        },
     },
-    clickLogout(logoutUrl, afterLogoutRedirectUrl) {
-      axios.post(logoutUrl).then((r) => {
-        window.location.href = afterLogoutRedirectUrl;
-      });
-    },
-    dialogOk() {
-      store.commit("dialogOk");
-    },
-    dialogCancel() {
-      store.commit("dialogCancel");
-    },
-  },
 });
