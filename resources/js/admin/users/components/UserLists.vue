@@ -78,8 +78,8 @@
                                 <v-btn @click="trash(item)" class="ma-1" small outlined icon color="red">
                                     <v-icon small>mdi-delete</v-icon>
                                 </v-btn>
-                                <v-btn @click="$router.push({name:'timeline.user',params:{name: item.name}})" class="ma-1" small outlined icon color="info">
-                                    <v-icon small>mdi-pencil</v-icon>
+                                <v-btn @click="$router.push({name:'timeline.user',params:{id: item.id}})" class="ma-1" small outlined icon color="info">
+                                    <v-icon small>mdi-eye</v-icon>
                                 </v-btn>
                             </div>
                         </td>

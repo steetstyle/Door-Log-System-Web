@@ -39,7 +39,8 @@ Vue.use(VueProgressBar, {
 
 // global component registrations here
 Vue.component("moon-loader", require("vue-spinner/src/MoonLoader.vue"));
-Vue.component("fc-body-card", require("./timeline/components/EventCard.vue"));
+Vue.component("DayOffAdd", require("./users/components/DayOffAdd.vue"));
+Vue.component("DayOffEdit", require("./users/components/DayOffEdit.vue"));
 
 // app
 import router from "./router";

@@ -30,10 +30,10 @@ const router = new Router({
             }, ],
         },
         {
-            path: "/user/timeline/:name",
+            path: "/user/timeline/:id",
             name: "timeline.user",
             component: require("./timeline/UserTimeline"),
-            props: (route) => ({ propName: route.params.name }),
+            props: (route) => ({ propUserId: route.params.id }),
         },
         {
             name: "cards",
@@ -108,6 +108,12 @@ const router = new Router({
                     name: "users.permissions.edit",
                     component: require("./users/components/PermissionFormEdit"),
                     props: (route) => ({ propPermissionId: route.params.id }),
+                },
+                {
+                    path: "dayoffs/create/:id",
+                    name: "users.dayoffs.create",
+                    component: require("./users/components/DayOffAdd"),
+                    props: (route) => ({ propUserId: route.params.id }),
                 },
             ],
         },

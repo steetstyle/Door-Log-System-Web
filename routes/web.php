@@ -38,4 +38,5 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth'])->group(function
     Route::resource('branchuser','BranchUserController');
     Route::resource('cardlogin','CardLoginController');
     Route::resource('cards','CardController');
+    Route::resource('dayoff','DayOffController');
 });

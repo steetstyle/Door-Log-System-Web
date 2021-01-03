@@ -31,7 +31,7 @@ class CardRepository extends BaseRepository
      */
     public function index($params)
     {
-
+        
         $query = Card::where('card.key', '!=' , null)->orderBy('card.id', 'DESC');
         if($params['key']){
             $query = $query->where('key','=', $params['key']);

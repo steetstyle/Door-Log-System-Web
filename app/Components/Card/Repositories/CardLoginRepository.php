@@ -33,8 +33,8 @@ class CardLoginRepository extends BaseRepository
      */
     public function index($params)
     {
+        $query = CardLogin::where('card_login.key', '!=' , null);
 
-        $query = CardLogin::where('card_login.key', '!=' , null)->orderBy('card_login.id', 'DESC');
         if(array_key_exists('start_date', $params) && $params['start_date']){
             if(key_exists('end_date', $params) && $params['end_date']){
 
@@ -59,8 +59,21 @@ class CardLoginRepository extends BaseRepository
                             ->join('users', 'users.id', '=', 'acard.user_id')
                             ->where('users.name', '=', $params['name']);
         }
-       
-        return $query->get();
+
+        if(array_key_exists('user_id', $params) && $params['user_id']){
+            $query = $query->join('card as acard', 'card_login.key', '=', 'acard.key')
+                            ->join('users', 'users.id', '=', 'acard.user_id')
+                            ->where('users.id', '=', $params['user_id']);
+        }
+
+        $query = $query->orderBy('card_login.id', 'DESC');
+
+        $page_params = [
+            'page' => array_key_exists('page', $params) ?  $params['page'] -1 : 0,
+            'per_page' =>  array_key_exists('per_page', $params) ?  $params['per_page'] : 10,
+        ];
+
+        return $query->get()->skip($page_params['page']*$page_params['per_page'])->take($page_params['per_page']);
     }
 
     /**
