@@ -27,7 +27,7 @@ class Branch extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'tag'];
 
     /**
      * returns the users on this branch

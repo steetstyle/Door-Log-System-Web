@@ -2,14 +2,89 @@
 	<div class="component-wrap primary"  >
 		<div class="d-flex flex-lg-row ">
 			<div class="row">
-				<v-card width="50%" class="elevation-0 borderlessCard pa-12"  elevation="0">
-					<v-img
-						height="200px"
-						src="https://cdn.pixabay.com/photo/2020/07/12/07/47/bee-5396362_1280.jpg"
+				<v-app-bar width="100%"
+					flat
+					color="secondary"
+					centered
 					>
+
+					<v-toolbar-title class="title white--text pl-0">
+						{{ translate('common.infos')}}
+					</v-toolbar-title>
+
+					<v-spacer></v-spacer>
+				</v-app-bar>
+				<v-card
+					class="mx-auto ma-8 rounded-lg"
+					color="secondary"
+					max-height=150
+					outlined
+					>
+					<v-list-item three-line>
+						<v-list-item-content>
+							<div class="overline mb-4 white--text">
+								{{ translate('common.info')}}
+							</div>
+							<v-list-item-title class="headline mb-1 white--text" >
+								{{ translate('common.users_count')}}: <h3 class="white--text">15</h3>
+							</v-list-item-title> 
+						</v-list-item-content>
+						
+					</v-list-item>
+				</v-card>
+				<v-card
+					class="mx-auto ma-8 rounded-lg"
+					max-height=150
+					color="secondary"
+					outlined
+					>
+					<v-list-item three-line>
+						<v-list-item-content>
+							<div class="overline mb-4 white--text">
+								{{ translate('common.info')}}
+							</div>
+							<v-list-item-title class="headline mb-1 white--text">
+								{{ translate('common.cards_count')}}: <h3 class="white--text">15</h3>
+							</v-list-item-title> 
+						</v-list-item-content>
+						
+					</v-list-item>
+				</v-card>
+				<v-card
+					class="mx-auto ma-8 rounded-lg"
+					max-height=150
+					color="secondary"
+					outlined
+					>
+					<v-list-item three-line>
+						<v-list-item-content>
+							<div class="overline mb-4 white--text">
+								{{ translate('common.info')}}
+							</div>
+							<v-list-item-title class="headline mb-1 white--text">
+								{{ translate('common.branches_count')}}: <h3 class="white--text">15</h3>
+							</v-list-item-title> 
+						</v-list-item-content>
+						
+					</v-list-item>
+				</v-card>
+				<v-app-bar width="100%"
+					flat
+					color="secondary"
+					centered
+					>
+
+					<v-toolbar-title class="title white--text pl-0">
+						{{ translate('common.last_added_infos')}}
+					</v-toolbar-title>
+
+					<v-spacer></v-spacer>
+				</v-app-bar>
+				<v-card width="50%"  class="elevation-0 borderlessCard pa-12"  elevation="0">
+					
 						<v-app-bar
 							flat
-							color="rgba(0, 0, 0, 0)"
+							color="secondary"
 							@click="$router.push({ name: 'log.list' })"
 						>
 							<v-app-bar-nav-icon color="white"></v-app-bar-nav-icon>
@@ -20,7 +95,6 @@
 
 							<v-spacer></v-spacer>
 						</v-app-bar>
-					</v-img>
 
 					<v-card-text>
 						<div class="font-weight-bold ml-8 mb-2">
@@ -44,13 +118,10 @@
 					</v-card-text>
 				</v-card>
                  <v-card width="50%" class="elevation-0 borderlessCard pa-12">
-					<v-img
-						height="200px"
-						src="https://cdn.pixabay.com/photo/2020/07/12/07/47/bee-5396362_1280.jpg"
-					>
+				
 						<v-app-bar
 							flat
-							color="rgba(0, 0, 0, 0)"
+							color="secondary"
 							@click="$router.push({ name: 'cards.list' })"
 						>
 							<v-app-bar-nav-icon color="white"></v-app-bar-nav-icon>
@@ -62,7 +133,7 @@
 							<v-spacer></v-spacer>
 						</v-app-bar>
 
-					</v-img>
+				
 
 					<v-card-text>
 						<div class="font-weight-bold ml-8 mb-2">
@@ -95,7 +166,8 @@ export default {
 	data() {
 		return {
 			logs: [],
-            cards: [],
+			cards: [],
+			infos: [],
             timer: ''
 		};
 	},
@@ -147,7 +219,21 @@ export default {
 
                     (cb || Function)();
                 });
-            },
+		},
+		getInfos(cb){
+
+			const self = this;
+
+			let params = {
+
+			};
+			axios.post('api/info', {params: params}).then(function(){
+
+				self.infos = response.data.data;
+
+				(cb || Function)();
+			});
+		}
 	}
 };
 </script>

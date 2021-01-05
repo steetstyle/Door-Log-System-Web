@@ -9,7 +9,10 @@
                 <v-container grid-list-md>
                 <v-layout row wrap>
                     <v-flex xs12 sm12>
-                        <v-text-field label="Name" v-model="name" :rules="nameRules"></v-text-field>
+                        <v-text-field v-bind:label="translate('common.name')" v-model="name" :rules="nameRules"></v-text-field>
+                    </v-flex>
+                      <v-flex xs12 sm12>
+                        <v-text-field v-bind:label="translate('common.tag')" v-model="tag" :rules="tagRules"></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm8>
                         <v-select
@@ -62,6 +65,10 @@
                 nameRules: [
                     (v) => !!v || this.translate('common.name_is_required'),
                 ],
+                tag: '',
+                tagRules: [
+                    (v) => !!v || this.translate('common.tag_is_required'),
+                ],
                 selectedUser:null,
                 branch_users: [],
                 active:'',
@@ -110,6 +117,7 @@
 
                 let payload = {
                     name: self.name,
+                    tag: self.tag,
                     email: self.email,
                     password: self.password ? self.password : null,
                     active: self.active ? moment().format('YYYY-MM-DD') : null,
@@ -156,6 +164,7 @@
                     let branch = response.data.data;
 
                     self.name = branch.name;
+                    self.tag = branch.tag;
 
                     self.$store.commit('setBreadcrumbs',[
                         {label:this.translate('common.branches'),to:{name:'branches.list'}},

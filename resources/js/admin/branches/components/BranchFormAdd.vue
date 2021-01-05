@@ -16,6 +16,9 @@
                         <v-flex xs12>
                             <v-text-field v-bind:label="translate('branch.name')" v-model="name" :rules="nameRules"></v-text-field>
                         </v-flex>
+                        <v-flex xs12>
+                            <v-text-field v-bind:label="translate('branch.tag')" v-model="tag" :rules="tagRules"></v-text-field>
+                        </v-flex>
                      
                         <v-flex xs12>
                             <v-btn @click="save()" :loading="isLoading" :disabled="!valid || isLoading" color="lighten" dark>{{ translate('common.save') }}</v-btn>
@@ -39,6 +42,10 @@
                 nameRules: [
                     (v) => !!v || this.translate('common.name_is_required'),
                 ],
+                tag: '',
+                tagRules: [
+                    (v) => !!v || this.translate('common.tag_is_required'),
+                ],
             
             }
         },
@@ -59,6 +66,7 @@
 
                 let payload = {
                     name: self.name,
+                    tag: self.tag,
                 };
 
                 self.isLoading = true;

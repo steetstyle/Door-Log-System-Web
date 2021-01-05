@@ -71,6 +71,12 @@ const admin = new Vue({
                     accent: "#8c9eff",
                     error: "#b71c1c",
                 },
+                light: {
+                    primary: "#FFF",
+                    secondary: "black",
+                    accent: "#8c9eff",
+                    error: "#b71c1c",
+                },
             },
         },
         icons: {

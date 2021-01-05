@@ -27,7 +27,7 @@ class SinglePageController extends AdminController
             new MenuItem([
                 'group_requirements' => [],
                 'permission_requirements' => ['superuser'],
-                'label'=>'Dashboard',
+                'label'=> __('common.dashboard'),
                 'nav_type' => MenuItem::$NAV_TYPE_NAV,
                 'icon'=>'dashboard',
                 'route_type'=>'vue',
@@ -37,7 +37,7 @@ class SinglePageController extends AdminController
             new MenuItem([
                 'group_requirements' => [],
                 'permission_requirements' => ['superuser'],
-                'label'=>'Log',
+                'label'=>__('common.logs'),
                 'nav_type' => MenuItem::$NAV_TYPE_NAV,
                 'icon'=>'list',
                 'route_type'=>'vue',
@@ -47,7 +47,7 @@ class SinglePageController extends AdminController
             new MenuItem([
                 'group_requirements' => [],
                 'permission_requirements' => ['superuser'],
-                'label'=>'Cards',
+                'label'=>__('common.cards'),
                 'nav_type' => MenuItem::$NAV_TYPE_NAV,
                 'icon'=>'book',
                 'route_type'=>'vue',
@@ -57,7 +57,7 @@ class SinglePageController extends AdminController
             new MenuItem([
                 'group_requirements' => [],
                 'permission_requirements' => ['superuser'],
-                'label'=>'User',
+                'label'=>__('common.users'),
                 'nav_type' => MenuItem::$NAV_TYPE_NAV,
                 'icon'=>'person',   
                 'route_type'=>'vue',
@@ -67,7 +67,7 @@ class SinglePageController extends AdminController
             new MenuItem([
                 'group_requirements' => [],
                 'permission_requirements' => ['superuser'],
-                'label'=>'Branches',
+                'label'=> __('common.branches'),
                 'nav_type' => MenuItem::$NAV_TYPE_NAV,
                 'icon'=>'settings',
                 'route_type'=>'vue',

@@ -29,7 +29,7 @@
         'last_card_logins' => 'Son Kart Girişleri',
         'from_now' => 'Şimdiden itibaren',
         'last_added_cards' => 'Son Eklenen Kartlar',
-        'dashboard' => 'Anaysayfa',
+        'dashboard' => 'Anasayfa',
         'save' => 'Kaydet',
         'name_is_required' => 'İsim gerekli',
         'branches' => 'Şubeler',
@@ -86,5 +86,11 @@
         'add_day_off' => 'İzin Günü Ekle',
         'show_as_list' => 'Liste olarak göster',
         'show_day_off_list' => 'İzin Günlerini Listele',
-
+        'tag' => 'Tag',
+        'tag_is_required' => 'Tag Gerekli',
+        'logs' => 'Log Kayıtları',
+        'cards' => 'Tanımlı Kartlar',
+        'info' => 'Bilgi',
+        'infos' => 'Hızlı Bilgiler',
+        'last_added_infos' => 'Son Eklenenler'
     ];

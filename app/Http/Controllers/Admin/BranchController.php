@@ -43,6 +43,7 @@ class BranchController extends AdminController
     {
         $validate = validator($request->all(),[
             'name' => 'required',
+            'tag' => 'required',
         ]);
 
         if($validate->fails()) return $this->sendResponseBadRequest($validate->errors()->first());
@@ -81,6 +82,7 @@ class BranchController extends AdminController
     {
         $validate = validator($request->all(),[
             'name' => 'required',
+            'tag' => 'required',
         ]);
 
         if($validate->fails()) return $this->sendResponseBadRequest($validate->errors()->first());
