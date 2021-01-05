@@ -111,7 +111,7 @@
             self.loadCardLogins(()=>{});
 
             self.$store.commit('setBreadcrumbs',[
-                            {label:this.translate('common.card_logins'),name:''}
+                {label:this.translate('common.card_logins'),name:''}
             ]);
         },
         watch: {

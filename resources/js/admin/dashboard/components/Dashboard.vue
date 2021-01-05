@@ -2,7 +2,8 @@
 	<div class="component-wrap primary"  >
 		<div class="d-flex flex-lg-row ">
 			<div class="row">
-				<v-app-bar width="100%"
+				<v-app-bar 
+				width="100%"
 					flat
 					color="secondary"
 					centered
@@ -18,6 +19,7 @@
 					class="mx-auto ma-8 rounded-lg"
 					color="secondary"
 					max-height=150
+					min-width="30%"
 					outlined
 					>
 					<v-list-item three-line>
@@ -26,7 +28,7 @@
 								{{ translate('common.info')}}
 							</div>
 							<v-list-item-title class="headline mb-1 white--text" >
-								{{ translate('common.users_count')}}: <h3 class="white--text">15</h3>
+								{{ translate('common.users_count')}}: <h3 class="white--text">{{ infos.branches_count}}</h3>
 							</v-list-item-title> 
 						</v-list-item-content>
 						
@@ -35,6 +37,7 @@
 				<v-card
 					class="mx-auto ma-8 rounded-lg"
 					max-height=150
+					min-width="30%"
 					color="secondary"
 					outlined
 					>
@@ -44,7 +47,7 @@
 								{{ translate('common.info')}}
 							</div>
 							<v-list-item-title class="headline mb-1 white--text">
-								{{ translate('common.cards_count')}}: <h3 class="white--text">15</h3>
+								{{ translate('common.cards_count')}}: <h3 class="white--text">{{ infos.branches_count}}</h3>
 							</v-list-item-title> 
 						</v-list-item-content>
 						
@@ -53,6 +56,7 @@
 				<v-card
 					class="mx-auto ma-8 rounded-lg"
 					max-height=150
+					min-width="30%"
 					color="secondary"
 					outlined
 					>
@@ -62,7 +66,7 @@
 								{{ translate('common.info')}}
 							</div>
 							<v-list-item-title class="headline mb-1 white--text">
-								{{ translate('common.branches_count')}}: <h3 class="white--text">15</h3>
+								{{ translate('common.branches_count')}}: <h3 class="white--text">{{ infos.branches_count}}</h3>
 							</v-list-item-title> 
 						</v-list-item-content>
 						
@@ -175,7 +179,8 @@ export default {
 		const self = this;
 
 		this.loadCardLogins(() => {});
-        this.loadCards(() => {});
+		this.loadCards(() => {});
+		this.getInfos(() => {});
         
         this.timer = setInterval(() => {
             this.loadCardLogins(() => {});
@@ -227,9 +232,10 @@ export default {
 			let params = {
 
 			};
-			axios.post('api/info', {params: params}).then(function(){
+			axios.post('api/info', {params: params}).then(function(response){
 
 				self.infos = response.data.data;
+				console.log(self.infos);
 
 				(cb || Function)();
 			});

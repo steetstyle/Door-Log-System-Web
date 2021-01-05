@@ -107,6 +107,7 @@
 
             this.$store.commit('setBreadcrumbs',[
                 {label:this.translate('common.branches'),to:{name:'branches.list'}},
+                {label:this.translate('branch.edit_branch'),to:''},
             ]);
 
         },

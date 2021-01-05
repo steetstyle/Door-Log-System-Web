@@ -96,6 +96,7 @@
 
             this.$store.commit('setBreadcrumbs',[
                 {label:this.translate('card.title'),to:{name:'cards.list'}},
+                {label:this.translate('card.new_card'),to:''},
             ]);
 
         },

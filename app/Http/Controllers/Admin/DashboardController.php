@@ -15,8 +15,8 @@ use App\Components\User\Models\User;
 
 use App\Components\User\Repositories\UserRepository;
 use App\Components\Card\Repositories\CardRepository;
-use App\Components\DayOff\Repositories\DayOffRepository;
-use App\Components\CardLogin\Repositories\CardLoginRepository;
+use App\Components\User\Repositories\DayOffRepository;
+use App\Components\Card\Repositories\CardLoginRepository;
 use App\Components\Branch\Repositories\BranchRepository;
 
 class DashboardController extends AdminController
@@ -73,20 +73,20 @@ class DashboardController extends AdminController
     public function getInformation(){
         return $this->sendResponseOk([
             'users_count' => $this->getUsersCount(),
-            'branches_count' => $this>getBranchesCount(),
+            'branches_count' => $this->getBranchesCount(),
             'cards_count' => $this->getCardsCount()
         ], "Get informations ok.");
     }
 
     public function getUsersCount(){
-        return $this->userRepository->all()->count();
+        return $this->userRepository->listUsers([null])->count();
     }
 
     public function getCardsCount(){
-        return $this->cardRepository->all()->count();
+        return $this->cardRepository->index(null)->count();
     }
 
     public function getBranchesCount(){
-        return $this->branchRepository->all()->count();
+        return $this->branchRepository->index([null])->count();
     }
 }

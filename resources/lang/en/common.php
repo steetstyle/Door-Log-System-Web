@@ -92,5 +92,9 @@
         'cards' => 'Tanımlı Kartlar',
         'info' => 'Bilgi',
         'infos' => 'Hızlı Bilgiler',
-        'last_added_infos' => 'Son Eklenenler'
+        'last_added_infos' => 'Son Eklenenler',
+        'dayoff' => 'Kullanıcı Yoklama',
+        'users_count' => 'Kullanıcı Sayısı',
+        'branches_count' => 'Şube Sayısı',
+        'cards_count' => 'Kart Sayısı'
     ];

@@ -74,8 +74,6 @@ const admin = new Vue({
                 light: {
                     primary: "#FFF",
                     secondary: "black",
-                    accent: "#8c9eff",
-                    error: "#b71c1c",
                 },
             },
         },

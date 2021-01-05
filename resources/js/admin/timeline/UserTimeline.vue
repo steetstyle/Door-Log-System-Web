@@ -222,7 +222,7 @@
                 this.retrieveDayOffListDataFromApi(false);
             });
             this.$store.commit('setBreadcrumbs',[
-                {label:'DayOff',to:''},
+                {label:this.translate('common.dayoff'),to:''},
             ]);
         },
 

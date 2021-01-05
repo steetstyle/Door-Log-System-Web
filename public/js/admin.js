@@ -2703,9 +2703,7 @@ var admin = new __WEBPACK_IMPORTED_MODULE_2_vue___default.a({
                 },
                 light: {
                     primary: "#FFF",
-                    secondary: "black",
-                    accent: "#8c9eff",
-                    error: "#b71c1c"
+                    secondary: "black"
                 }
             }
         },
@@ -16357,7 +16355,7 @@ if (typeof jQuery === 'undefined') {
 /* 185 */
 /***/ (function(module, exports) {
 
-module.exports = {"en":{"auth":{"failed":"These credentials do not match our records.","throttle":"Too many login attempts. Please try again in :seconds seconds."},"branch":{"new_branch":"Yeni Şube","detail":"Şube Detayı","name":"Şube İsmi","edit_branch":"Şubeyi Düzenle"},"card":{"new_card":"Kart Ekle","edit_card":"Kart Düzenle","title":"Başlık"},"common":{"select_branches":"Şube seçiniz","select_user":"Kullanıcı Şeçiniz","create":"Oluştur","key_is_required":"Key Gerekli","update":"Güncelle","filter_by_key":"Key'e göre filtrele","filters":"Filtreler","filter_by_name":"İsme göre filterele","clear_filter":"Filtreyi Temizle","action":"İşlemler","id":"ID","key":"Key","place":"Lokasyon","name":"İsim","email":"Email","permissions":"İzinler","groups":"Gruplar","last_login":"Son Giriş","active":"Aktiflik","card_user_name":"Kart Kullanıcısı","created_at":"Oluşturulma Tarihi","updated_at":"Güncellenme Tarihi","card_logins":"Kart Girişleri","are_you_sure_for_delete_this_card":" Kartı silmek istediğinize eminmisiniz ?","filter_by_branch":"Şubeye göre filterele","last_card_logins":"Son Kart Girişleri","from_now":"Şimdiden itibaren","last_added_cards":"Son Eklenen Kartlar","dashboard":"Anaysayfa","save":"Kaydet","name_is_required":"İsim Gerekli","branches":"Şubeler","select_users":"Kullanıcı Şeçiniz","special_user_assigned":"Kullanıcı atanmamış","_are_you_sure_for_delete_this_branch":"Şubeyi silmek istediğinize eminmisiniz ?","edit":"Düzenle","add_user":"Kullanıcı Ekle","branches_list":"Şubeler","users":"Kullanıcılar","card_list":"Kartlar","filter_by_email":"Email'e göre filtrele","filter_by_groups":"Gruba göre filtrele","show":"Göster","user_permissions":"Kullanıcı Yetkileri","manage_groups":"Grupları Yönet","manage_permissions":"İzinleri Yönet","no_permission":"Tanımlı İzin Yok","special_permissions":"Özel izinler","special_permissions_detail":"are permission exclusive to this user. Permissions defined here\n            are more superior than any permission that is in his group. So if the User belongs to a group that has permission to \"create something\"\n            but then is denied to \"create something\" here, the user will be denied on that permission. In short, special permissions\n            has high priority that group permissions.","first_name":"İsim","password":"Şifre","confirm_password":"Şifreyi Doğrula","pre_activate_account":"Önceden Aktif edilmiş","select_permission":"İzin şeçiniz","permission_value":"İzinler","no_special_permissions_assigned":"Hiç özel izin atanamaış","email_is_required":"Email Gerekli","password_is_required":"Şifre Gerekli","password_do_not_match":"Girilen şifreler uyuşmuyor","allow":"İzin  ver","deny":"Reddet","inherit":"Miras Al","email_must_be_valid":"Geçerli bir email giriniz.","add_permission":"İzin Ekle","pasword_leave_blank_if_unchange":"Şifre (Değişmesini istemiyorsanız boş bırakınız)","select_day_off_type":"İzin Günü tipini şeçiniz","date_range":"Tarih Aralığı","description_is_required":"Açıklama gerekli","day_off_type_is_required":"İzin günü tipi şeçmelisiniz","select_at_least_one_date":"En az bir tarih şeçmelisiniz","description":"Açıklama","dayoffs":"İzin Günleri","back":"Geri","add_day_off":"İzin Günü Ekle","show_as_list":"Liste olarak göster","show_day_off_list":"İzin Günlerini Listele","tag":"Tag","tag_is_required":"Tag Gerekli","logs":"Log Kayıtları","cards":"Tanımlı Kartlar","info":"Bilgi","infos":"Hızlı Bilgiler","last_added_infos":"Son Eklenenler"},"dayoff":{"create_day_off":"İzin Günü Ekle","detail":"İzin Günü Detayı"},"pagination":{"previous":"&laquo; Previous","next":"Next &raquo;"},"passwords":{"password":"Passwords must be at least six characters and match the confirmation.","reset":"Your password has been reset!","sent":"We have e-mailed your password reset link!","token":"This password reset token is invalid.","user":"We can't find a user with that e-mail address."},"users":{"create_user":"Kullanıcı Ekle","edit_user":"Kullanıcı Düzenle"},"validation":{"accepted":"The :attribute must be accepted.","active_url":"The :attribute is not a valid URL.","after":"The :attribute must be a date after :date.","after_or_equal":"The :attribute must be a date after or equal to :date.","alpha":"The :attribute may only contain letters.","alpha_dash":"The :attribute may only contain letters, numbers, and dashes.","alpha_num":"The :attribute may only contain letters and numbers.","array":"The :attribute must be an array.","before":"The :attribute must be a date before :date.","before_or_equal":"The :attribute must be a date before or equal to :date.","between":{"numeric":"The :attribute must be between :min and :max.","file":"The :attribute must be between :min and :max kilobytes.","string":"The :attribute must be between :min and :max characters.","array":"The :attribute must have between :min and :max items."},"boolean":"The :attribute field must be true or false.","confirmed":"The :attribute confirmation does not match.","date":"The :attribute is not a valid date.","date_format":"The :attribute does not match the format :format.","different":"The :attribute and :other must be different.","digits":"The :attribute must be :digits digits.","digits_between":"The :attribute must be between :min and :max digits.","dimensions":"The :attribute has invalid image dimensions.","distinct":"The :attribute field has a duplicate value.","email":"The :attribute must be a valid email address.","exists":"The selected :attribute is invalid.","file":"The :attribute must be a file.","filled":"The :attribute field must have a value.","image":"The :attribute must be an image.","in":"The selected :attribute is invalid.","in_array":"The :attribute field does not exist in :other.","integer":"The :attribute must be an integer.","ip":"The :attribute must be a valid IP address.","ipv4":"The :attribute must be a valid IPv4 address.","ipv6":"The :attribute must be a valid IPv6 address.","json":"The :attribute must be a valid JSON string.","max":{"numeric":"The :attribute may not be greater than :max.","file":"The :attribute may not be greater than :max kilobytes.","string":"The :attribute may not be greater than :max characters.","array":"The :attribute may not have more than :max items."},"mimes":"The :attribute must be a file of type: :values.","mimetypes":"The :attribute must be a file of type: :values.","min":{"numeric":"The :attribute must be at least :min.","file":"The :attribute must be at least :min kilobytes.","string":"The :attribute must be at least :min characters.","array":"The :attribute must have at least :min items."},"not_in":"The selected :attribute is invalid.","numeric":"The :attribute must be a number.","present":"The :attribute field must be present.","regex":"The :attribute format is invalid.","required":"The :attribute field is required.","required_if":"The :attribute field is required when :other is :value.","required_unless":"The :attribute field is required unless :other is in :values.","required_with":"The :attribute field is required when :values is present.","required_with_all":"The :attribute field is required when :values is present.","required_without":"The :attribute field is required when :values is not present.","required_without_all":"The :attribute field is required when none of :values are present.","same":"The :attribute and :other must match.","size":{"numeric":"The :attribute must be :size.","file":"The :attribute must be :size kilobytes.","string":"The :attribute must be :size characters.","array":"The :attribute must contain :size items."},"string":"The :attribute must be a string.","timezone":"The :attribute must be a valid zone.","unique":"The :attribute has already been taken.","uploaded":"The :attribute failed to upload.","url":"The :attribute format is invalid.","custom":{"attribute-name":{"rule-name":"custom-message"}},"attributes":[]}}}
+module.exports = {"en":{"auth":{"failed":"These credentials do not match our records.","throttle":"Too many login attempts. Please try again in :seconds seconds."},"branch":{"new_branch":"Yeni Şube","detail":"Şube Detayı","name":"Şube İsmi","edit_branch":"Şubeyi Düzenle"},"card":{"new_card":"Kart Ekle","edit_card":"Kart Düzenle","title":"Başlık"},"common":{"select_branches":"Şube seçiniz","select_user":"Kullanıcı Şeçiniz","create":"Oluştur","key_is_required":"Key Gerekli","update":"Güncelle","filter_by_key":"Key'e göre filtrele","filters":"Filtreler","filter_by_name":"İsme göre filterele","clear_filter":"Filtreyi Temizle","action":"İşlemler","id":"ID","key":"Key","place":"Lokasyon","name":"İsim","email":"Email","permissions":"İzinler","groups":"Gruplar","last_login":"Son Giriş","active":"Aktiflik","card_user_name":"Kart Kullanıcısı","created_at":"Oluşturulma Tarihi","updated_at":"Güncellenme Tarihi","card_logins":"Kart Girişleri","are_you_sure_for_delete_this_card":" Kartı silmek istediğinize eminmisiniz ?","filter_by_branch":"Şubeye göre filterele","last_card_logins":"Son Kart Girişleri","from_now":"Şimdiden itibaren","last_added_cards":"Son Eklenen Kartlar","dashboard":"Anasayfa","save":"Kaydet","name_is_required":"İsim Gerekli","branches":"Şubeler","select_users":"Kullanıcı Şeçiniz","special_user_assigned":"Kullanıcı atanmamış","_are_you_sure_for_delete_this_branch":"Şubeyi silmek istediğinize eminmisiniz ?","edit":"Düzenle","add_user":"Kullanıcı Ekle","branches_list":"Şubeler","users":"Kullanıcılar","card_list":"Kartlar","filter_by_email":"Email'e göre filtrele","filter_by_groups":"Gruba göre filtrele","show":"Göster","user_permissions":"Kullanıcı Yetkileri","manage_groups":"Grupları Yönet","manage_permissions":"İzinleri Yönet","no_permission":"Tanımlı İzin Yok","special_permissions":"Özel izinler","special_permissions_detail":"are permission exclusive to this user. Permissions defined here\n            are more superior than any permission that is in his group. So if the User belongs to a group that has permission to \"create something\"\n            but then is denied to \"create something\" here, the user will be denied on that permission. In short, special permissions\n            has high priority that group permissions.","first_name":"İsim","password":"Şifre","confirm_password":"Şifreyi Doğrula","pre_activate_account":"Önceden Aktif edilmiş","select_permission":"İzin şeçiniz","permission_value":"İzinler","no_special_permissions_assigned":"Hiç özel izin atanamaış","email_is_required":"Email Gerekli","password_is_required":"Şifre Gerekli","password_do_not_match":"Girilen şifreler uyuşmuyor","allow":"İzin  ver","deny":"Reddet","inherit":"Miras Al","email_must_be_valid":"Geçerli bir email giriniz.","add_permission":"İzin Ekle","pasword_leave_blank_if_unchange":"Şifre (Değişmesini istemiyorsanız boş bırakınız)","select_day_off_type":"İzin Günü tipini şeçiniz","date_range":"Tarih Aralığı","description_is_required":"Açıklama gerekli","day_off_type_is_required":"İzin günü tipi şeçmelisiniz","select_at_least_one_date":"En az bir tarih şeçmelisiniz","description":"Açıklama","dayoffs":"İzin Günleri","back":"Geri","add_day_off":"İzin Günü Ekle","show_as_list":"Liste olarak göster","show_day_off_list":"İzin Günlerini Listele","tag":"Tag","tag_is_required":"Tag Gerekli","logs":"Log Kayıtları","cards":"Tanımlı Kartlar","info":"Bilgi","infos":"Hızlı Bilgiler","last_added_infos":"Son Eklenenler","dayoff":"Kullanıcı Yoklama","users_count":"Kullanıcı Sayısı","branches_count":"Şube Sayısı","cards_count":"Kart Sayısı"},"dayoff":{"create_day_off":"İzin Günü Ekle","detail":"İzin Günü Detayı"},"pagination":{"previous":"&laquo; Previous","next":"Next &raquo;"},"passwords":{"password":"Passwords must be at least six characters and match the confirmation.","reset":"Your password has been reset!","sent":"We have e-mailed your password reset link!","token":"This password reset token is invalid.","user":"We can't find a user with that e-mail address."},"users":{"create_user":"Kullanıcı Ekle","edit_user":"Kullanıcı Düzenle"},"validation":{"accepted":"The :attribute must be accepted.","active_url":"The :attribute is not a valid URL.","after":"The :attribute must be a date after :date.","after_or_equal":"The :attribute must be a date after or equal to :date.","alpha":"The :attribute may only contain letters.","alpha_dash":"The :attribute may only contain letters, numbers, and dashes.","alpha_num":"The :attribute may only contain letters and numbers.","array":"The :attribute must be an array.","before":"The :attribute must be a date before :date.","before_or_equal":"The :attribute must be a date before or equal to :date.","between":{"numeric":"The :attribute must be between :min and :max.","file":"The :attribute must be between :min and :max kilobytes.","string":"The :attribute must be between :min and :max characters.","array":"The :attribute must have between :min and :max items."},"boolean":"The :attribute field must be true or false.","confirmed":"The :attribute confirmation does not match.","date":"The :attribute is not a valid date.","date_format":"The :attribute does not match the format :format.","different":"The :attribute and :other must be different.","digits":"The :attribute must be :digits digits.","digits_between":"The :attribute must be between :min and :max digits.","dimensions":"The :attribute has invalid image dimensions.","distinct":"The :attribute field has a duplicate value.","email":"The :attribute must be a valid email address.","exists":"The selected :attribute is invalid.","file":"The :attribute must be a file.","filled":"The :attribute field must have a value.","image":"The :attribute must be an image.","in":"The selected :attribute is invalid.","in_array":"The :attribute field does not exist in :other.","integer":"The :attribute must be an integer.","ip":"The :attribute must be a valid IP address.","ipv4":"The :attribute must be a valid IPv4 address.","ipv6":"The :attribute must be a valid IPv6 address.","json":"The :attribute must be a valid JSON string.","max":{"numeric":"The :attribute may not be greater than :max.","file":"The :attribute may not be greater than :max kilobytes.","string":"The :attribute may not be greater than :max characters.","array":"The :attribute may not have more than :max items."},"mimes":"The :attribute must be a file of type: :values.","mimetypes":"The :attribute must be a file of type: :values.","min":{"numeric":"The :attribute must be at least :min.","file":"The :attribute must be at least :min kilobytes.","string":"The :attribute must be at least :min characters.","array":"The :attribute must have at least :min items."},"not_in":"The selected :attribute is invalid.","numeric":"The :attribute must be a number.","present":"The :attribute field must be present.","regex":"The :attribute format is invalid.","required":"The :attribute field is required.","required_if":"The :attribute field is required when :other is :value.","required_unless":"The :attribute field is required unless :other is in :values.","required_with":"The :attribute field is required when :values is present.","required_with_all":"The :attribute field is required when :values is present.","required_without":"The :attribute field is required when :values is not present.","required_without_all":"The :attribute field is required when none of :values are present.","same":"The :attribute and :other must match.","size":{"numeric":"The :attribute must be :size.","file":"The :attribute must be :size kilobytes.","string":"The :attribute must be :size characters.","array":"The :attribute must contain :size items."},"string":"The :attribute must be a string.","timezone":"The :attribute must be a valid zone.","unique":"The :attribute has already been taken.","uploaded":"The :attribute failed to upload.","url":"The :attribute format is invalid.","custom":{"attribute-name":{"rule-name":"custom-message"}},"attributes":[]}}}
 
 /***/ }),
 /* 186 */
@@ -63074,6 +63072,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -63091,6 +63093,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 		this.loadCardLogins(function () {});
 		this.loadCards(function () {});
+		this.getInfos(function () {});
 
 		this.timer = setInterval(function () {
 			_this.loadCardLogins(function () {});
@@ -63139,9 +63142,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var self = this;
 
 			var params = {};
-			axios.post('api/info', { params: params }).then(function () {
+			axios.post('api/info', { params: params }).then(function (response) {
 
 				self.infos = response.data.data;
+				console.log(self.infos);
 
 				(cb || Function)();
 			});
@@ -63191,7 +63195,12 @@ var render = function() {
             "v-card",
             {
               staticClass: "mx-auto ma-8 rounded-lg",
-              attrs: { color: "secondary", "max-height": "150", outlined: "" }
+              attrs: {
+                color: "secondary",
+                "max-height": "150",
+                "min-width": "30%",
+                outlined: ""
+              }
             },
             [
               _c(
@@ -63219,7 +63228,7 @@ var render = function() {
                               ": "
                           ),
                           _c("h3", { staticClass: "white--text" }, [
-                            _vm._v("15")
+                            _vm._v(_vm._s(_vm.infos.branches_count))
                           ])
                         ]
                       )
@@ -63237,7 +63246,12 @@ var render = function() {
             "v-card",
             {
               staticClass: "mx-auto ma-8 rounded-lg",
-              attrs: { "max-height": "150", color: "secondary", outlined: "" }
+              attrs: {
+                "max-height": "150",
+                "min-width": "30%",
+                color: "secondary",
+                outlined: ""
+              }
             },
             [
               _c(
@@ -63265,7 +63279,7 @@ var render = function() {
                               ": "
                           ),
                           _c("h3", { staticClass: "white--text" }, [
-                            _vm._v("15")
+                            _vm._v(_vm._s(_vm.infos.branches_count))
                           ])
                         ]
                       )
@@ -63283,7 +63297,12 @@ var render = function() {
             "v-card",
             {
               staticClass: "mx-auto ma-8 rounded-lg",
-              attrs: { "max-height": "150", color: "secondary", outlined: "" }
+              attrs: {
+                "max-height": "150",
+                "min-width": "30%",
+                color: "secondary",
+                outlined: ""
+              }
             },
             [
               _c(
@@ -63311,7 +63330,7 @@ var render = function() {
                               ": "
                           ),
                           _c("h3", { staticClass: "white--text" }, [
-                            _vm._v("15")
+                            _vm._v(_vm._s(_vm.infos.branches_count))
                           ])
                         ]
                       )
@@ -64457,7 +64476,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$eventBus.$on(['DAYOFF_UPDATED'], function () {
             _this2.retrieveDayOffListDataFromApi(false);
         });
-        this.$store.commit('setBreadcrumbs', [{ label: 'DayOff', to: '' }]);
+        this.$store.commit('setBreadcrumbs', [{ label: this.translate('common.dayoff'), to: '' }]);
     },
 
 
@@ -65798,7 +65817,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         self.key = self.propKey;
 
-        this.$store.commit('setBreadcrumbs', [{ label: this.translate('card.title'), to: { name: 'cards.list' } }]);
+        this.$store.commit('setBreadcrumbs', [{ label: this.translate('card.title'), to: { name: 'cards.list' } }, { label: this.translate('card.new_card'), to: '' }]);
     },
 
     methods: {
@@ -66194,7 +66213,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         });
 
-        this.$store.commit('setBreadcrumbs', [{ label: this.translate('card.title'), to: { name: 'cards.list' } }]);
+        this.$store.commit('setBreadcrumbs', [{ label: this.translate('card.title'), to: { name: 'cards.list' } }, { label: this.translate('card.edit_card'), to: '' }]);
     },
 
     methods: {
@@ -72463,7 +72482,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        this.$store.commit('setBreadcrumbs', [{ label: this.translate('common.branches'), to: { name: 'branches.list' } }]);
+        this.$store.commit('setBreadcrumbs', [{ label: this.translate('common.branches'), to: { name: 'branches.list' } }, { label: this.translate('branch.new_branch'), to: '' }]);
     },
 
     watch: {
@@ -72827,7 +72846,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this2.loadBranch(function () {});
         });
 
-        this.$store.commit('setBreadcrumbs', [{ label: this.translate('common.branches'), to: { name: 'branches.list' } }]);
+        this.$store.commit('setBreadcrumbs', [{ label: this.translate('common.branches'), to: { name: 'branches.list' } }, { label: this.translate('branch.edit_branch'), to: '' }]);
     },
 
     methods: {
