@@ -11,22 +11,22 @@
                 <v-container grid-list-md>
                     <v-layout row wrap >
                         <v-flex xs12 md6>
-                            <div class="body-2 white--text">Dayoff Details</div>
+                            <div class="body-2 white--text">{{ translate('dayoff.detail') }}</div>
                         </v-flex>
                           <v-flex xs12 md12  align-center justify-center>
-                            <v-date-picker ma12 filled landscape prepend-icon="search" label="Date Range" range v-model="dates" ></v-date-picker>
+                            <v-date-picker ma12 filled landscape prepend-icon="search" v-bind:label="translate('common.date_range')"  range v-model="dates" ></v-date-picker>
                             <v-flex xs12 md12>
                                 <v-select
-                                    label="Select Day Off Type"
+                                    v-bind:label="translate('common.select_day_off_type')"
                                     v-bind:items="options.dayofftypes"
                                     v-model="selectedDayOffType"
                                     item-text="title"
                                     :rules="selectedDayOffTypeRules"
                                     item-value="key">
                                 </v-select>
-                                <v-textarea label="Description" v-model="description" :rules="descriptionRules"></v-textarea>
+                                <v-textarea v-bind:label="translate('common.description')" v-model="description" :rules="descriptionRules"></v-textarea>
                             </v-flex>
-                            <v-btn @click="save()" :loading="isLoading" :disabled="!valid || isLoading" color="lighten" dark>Save</v-btn>
+                            <v-btn @click="save()" :loading="isLoading" :disabled="!valid || isLoading" color="lighten" dark>{{ translate('common.save') }}</v-btn>
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -52,7 +52,7 @@
                 user_id:'',
                 description: '',
                 descriptionRules: [
-                    (v) => !!v || 'Description is required',
+                    (v) => !!v || this.translate('common.description_is_required'),
                 ],
                 options:{
                     dayofftypes:[
@@ -62,15 +62,15 @@
                 },
                 selectedDayOffType:'',
                 selectedDayOffTypeRules:[
-                    (v) => !!v || 'Day Off Type is required',
+                    (v) => !!v || this.translate('common.day_off_type_is_required'),
                 ],
             }
         },
         created() {
             this.$store.commit('setBreadcrumbs',[
-                {label:'Users',to:{name:'users.list'}},
-                {label:'DayOffs',to:{name:'users.dayoff.list'}},
-                {label:'Edit',name:''},
+                {label:this.translate('common.users'),to:{name:'users.list'}},
+                {label:this.translate('common.dayoffs'),to:{name:'users.dayoff.list'}},
+                {label:this.translate('common.edit'),name:''},
             ]);
 
             this.id = this.$attrs.id != undefined ? this.$attrs.id : this.propId;
@@ -129,7 +129,7 @@
 
                 if(!(self.dates.length > 0)){
                      self.$store.commit('showSnackbar',{
-                            message: "Select at least one Date",
+                            message: this.translate('common.select_at_least_one_date'),
                             color: 'error',
                             duration: 3000
                         });

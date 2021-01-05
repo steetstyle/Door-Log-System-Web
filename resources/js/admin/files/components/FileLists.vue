@@ -94,9 +94,9 @@
         data() {
             return {
                 headers: [
-                    { text: 'Action', value: false, align: 'left', sortable: false },
+                    { text: this.translate('common.action'), value: false, align: 'left', sortable: false },
                     { text: 'Thumb', value: 'thumb', align: 'left', sortable: false },
-                    { text: 'Name', value: 'name', align: 'left', sortable: false },
+                    { text: this.translate('common.name'), value: 'name', align: 'left', sortable: false },
                     { text: 'Size', value: 'size', align: 'left', sortable: false },
                     { text: 'Found In', value: 'group', align: 'left', sortable: false },
                     { text: 'Date Created', value: 'created_at', align: 'left', sortable: false },
@@ -184,7 +184,7 @@
 
                 self.$store.commit('showDialog',{
                     type: "confirm",
-                    title: "Confirm Deletion",
+                    title: this.translate('common.confirm_deletion'),
                     message: "Are you sure you want to delete this file?",
                     okCb: ()=>{
 

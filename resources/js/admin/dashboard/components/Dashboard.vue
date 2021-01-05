@@ -15,7 +15,7 @@
 							<v-app-bar-nav-icon color="white"></v-app-bar-nav-icon>
 
 							<v-toolbar-title class="title white--text pl-0">
-								Last Card Logins
+								{{ translate('common.last_card_logins')}}
 							</v-toolbar-title>
 
 							<v-spacer></v-spacer>
@@ -24,7 +24,7 @@
 
 					<v-card-text>
 						<div class="font-weight-bold ml-8 mb-2">
-							From Now
+							{{ translate('common.from_now')}}
 						</div>
 
 						<v-timeline align-top dense>
@@ -56,7 +56,7 @@
 							<v-app-bar-nav-icon color="white"></v-app-bar-nav-icon>
 
 							<v-toolbar-title class="title white--text pl-0">
-								Last Added Cards 
+								{{ translate('common.last_added_cards')}}
 							</v-toolbar-title>
 
 							<v-spacer></v-spacer>
@@ -66,7 +66,7 @@
 
 					<v-card-text>
 						<div class="font-weight-bold ml-8 mb-2">
-							From Now
+							{{ translate('common.from_now')}}
 						</div>
 
 						<v-timeline align-top dense>
@@ -111,7 +111,7 @@ export default {
         }, 20000);
 
 		self.$store.commit("setBreadcrumbs", [
-			{ label: "Dashboard", name: "Dashboard" }
+			{ label: this.translate('common.dashboard'), name: "Dashboard" }
 		]);
 	},
 	methods: {

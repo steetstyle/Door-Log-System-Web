@@ -4,21 +4,21 @@
         <!-- form -->
         <v-card>
             <v-card-title>
-                <v-icon>vpn_key</v-icon> Create Branch
+                <v-icon>vpn_key</v-icon> {{ translate('branch.new_branch')}}
             </v-card-title>
             <v-divider class="mb-2"></v-divider>
             <v-form v-model="valid" ref="branchFormAdd" lazy-validation>
                 <v-container grid-list-md>
                     <v-layout row wrap>
                         <v-flex xs12>
-                            <div class="body-2 white--text">Branch Details</div>
+                            <div class="body-2 white--text">{{ translate('branch.detail')}}</div>
                         </v-flex>
                         <v-flex xs12>
-                            <v-text-field label="Branch Name" v-model="name" :rules="nameRules"></v-text-field>
+                            <v-text-field v-bind:label="translate('branch.name')" v-model="name" :rules="nameRules"></v-text-field>
                         </v-flex>
                      
                         <v-flex xs12>
-                            <v-btn @click="save()" :loading="isLoading" :disabled="!valid || isLoading" color="lighten" dark>Save</v-btn>
+                            <v-btn @click="save()" :loading="isLoading" :disabled="!valid || isLoading" color="lighten" dark>{{ translate('common.save') }}</v-btn>
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -37,14 +37,14 @@
                 isLoading: false,
                 name: '',
                 nameRules: [
-                    (v) => !!v || 'Name is required',
+                    (v) => !!v || this.translate('common.name_is_required'),
                 ],
             
             }
         },
         mounted() {
             this.$store.commit('setBreadcrumbs',[
-                {label:'Branches',to:{name:'branches.list'}},
+                {label:this.translate('common.branches'),to:{name:'branches.list'}},
             ]);
         },
         watch: {

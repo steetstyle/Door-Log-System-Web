@@ -5,7 +5,7 @@
         <v-card>
             <div class="d-flex flex-row">
                 <div class="flex-grow-1">
-                    <v-text-field prepend-icon="search" label="Filter By Name" v-model="filters.name"></v-text-field>
+                    <v-text-field prepend-icon="search" v-bind:label="translate('common.filter_by_name')"  v-model="filters.name"></v-text-field>
                 </div>
                 <div class="flex-grow-1 text-right">
                     <v-btn @click="showDialog('file_group_add')" dark class="specialPrimary lighten-1">
@@ -96,7 +96,7 @@
         data() {
             return {
                 headers: [
-                    { text: 'Action', value: false, align: 'left', sortable: false },
+                    { text: this.translate('common.action'), value: false, align: 'left', sortable: false },
                     { text: 'Group Name', value: 'name', align: 'left', sortable: false },
                     { text: 'Description', value: 'description', align: 'left', sortable: false },
                     { text: 'Total Files', value: 'file_count', align: 'left', sortable: false },
@@ -149,7 +149,7 @@
 
                 self.$store.commit('showDialog',{
                     type: "confirm",
-                    title: "Confirm Deletion",
+                    title: this.translate('common.confirm_deletion'),
                     message: "Are you sure you want to delete this file group?",
                     okCb: ()=>{
 

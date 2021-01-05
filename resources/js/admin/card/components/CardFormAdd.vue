@@ -2,7 +2,7 @@
     <div>
         <v-card>
             <v-card-title>
-                <v-icon>list</v-icon> Add Card
+                <v-icon>list</v-icon> {{ translate('card.new_card')}}
             </v-card-title>
             <v-divider class="mb-2"></v-divider>
             <v-form v-model="valid" ref="cardFormAdd" lazy-validation>
@@ -13,7 +13,7 @@
                     </v-flex>
                     <v-flex xs12 sm8>
                         <v-select
-                                label="Select Branches"
+                                v-bind:label="translate('common.select_branches')"
                                 v-bind:items="options.branches"
                                 v-model="selectedBranch"
                                 item-text="name"
@@ -22,7 +22,7 @@
                     </v-flex>
                      <v-flex xs12 sm8>
                         <v-select
-                                label="Select User"
+                                v-bind:label="translate('common.select_user')"
                                 v-bind:items="options.users"
                                 v-model="selectedUser"
                                 item-text="name"
@@ -31,7 +31,7 @@
                     </v-flex>
                   
                     <v-flex xs12>
-                        <v-btn @click="create()" :disabled="!valid" color="lighten" dark>Create</v-btn>
+                        <v-btn @click="create()" :disabled="!valid" color="lighten" dark>{{ translate('common.create') }}</v-btn>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -55,7 +55,7 @@
                 valid: false,
                 key: '',
                 keyRules: [
-                    (v) => !!v || 'Key is required',
+                    (v) => !!v || this.translate('common.key_is_required'),
                 ],
                 selectedUser:null,
                 selectedBranch:null,
@@ -95,7 +95,7 @@
             self.key = self.propKey;
 
             this.$store.commit('setBreadcrumbs',[
-                {label:'Cards',to:{name:'cards.list'}},
+                {label:this.translate('card.title'),to:{name:'cards.list'}},
             ]);
 
         },

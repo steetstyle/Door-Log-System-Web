@@ -18,6 +18,7 @@ class CreateBranchesTable extends Migration
         {
             $table->increments('id');
             $table->string('name')->index();
+            $table->string('tag')->index();
             $table->timestamps();
         });
     }

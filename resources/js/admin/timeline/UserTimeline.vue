@@ -14,7 +14,7 @@
         <v-dialog v-model="dialogs.showEditForm.show" absolute  max-width="660px">
             <v-card>
                 <v-card-text>
-                <v-btn style=" position: fixed; top: 25px;" large m15 @click="closeDialog('dayoff_edit', item)" outlined rounded color="grey" dark>Back</v-btn>
+                <v-btn style=" position: fixed; top: 25px;" large m15 @click="closeDialog('dayoff_edit', item)" outlined rounded color="grey" dark>{{ translate('common.back')}}</v-btn>
                  <DayOffEdit :id="dialogs.showEditForm.item !== null ? dialogs.showEditForm.item.id : null"/>
                 </v-card-text>
             </v-card>
@@ -51,7 +51,7 @@
                                 <td>{{ item.end_date }}</td>
                                 <td>{{ item.description }}</td>
                                 <td>
-                                    <v-btn small @click="showDialog('dayoff_edit', item)" outlined rounded color="grey" dark>Edit</v-btn>
+                                    <v-btn small @click="showDialog('dayoff_edit', item)" outlined rounded color="grey" dark>{{ translate('common.edit')}}</v-btn>
                                 </td>
                             </tr>
                         </tbody>
@@ -98,9 +98,9 @@
 
      <v-divider class="py-5"/>
         <v-flex xs12>
-            <v-btn @click="showDialog('create_form',{})"  color="lighten" dark>Add Day Off</v-btn>
-            <v-btn @click="showDialog('timeline_list',{})"  color="lighten" dark>Show As List</v-btn>
-            <v-btn @click="showDialog('dayoff_list',{})"  color="lighten" dark>Show DayOff List</v-btn>
+            <v-btn @click="showDialog('create_form',{})"  color="lighten" dark>{{ translate('common.add_day_off')}}</v-btn>
+            <v-btn @click="showDialog('timeline_list',{})"  color="lighten" dark>{{ translate('common.show_as_list')}}</v-btn>
+            <v-btn @click="showDialog('dayoff_list',{})"  color="lighten" dark>{{ translate('common.show_day_off_list') }}</v-btn>
         </v-flex>
         <full-calendar :events="fcEvents"  locale="en" ></full-calendar>
     </div>
@@ -145,7 +145,7 @@
             return {
                 name: '',
                 nameRules: [
-                    (v) => !!v || 'Name is required',
+                    (v) => !!v || this.translate('common.name_is_required'),
                 ],
                 userId:'',
                 fcEvents : [],
@@ -189,7 +189,7 @@
                             { text: 'Start Date', value: 'start_date', align: 'left', sortable: false },
                             { text: 'End Date', value: 'end_date', align: 'left', sortable: false },
                             { text: 'Description', value: 'description', align: 'left', sortable: false },
-                            { text: 'Action', value: 'action', align: 'left', sortable: false },
+                            { text: this.translate('common.action'), value: 'action', align: 'left', sortable: false },
                         ]
                     
                     },

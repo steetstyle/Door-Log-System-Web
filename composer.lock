@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95f64f801a550a438feb71863a35d10a",
+    "content-hash": "4f2ebf6110784e097d6cdf967bb7546d",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -279,6 +279,140 @@
                 "validator"
             ],
             "time": "2020-02-13T22:36:52+00:00"
+        },
+        {
+            "name": "elementaryframework/events",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ElementaryFramework/Events.git",
+                "reference": "af2bd96815775fe7e40afade374286f3369a7772"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ElementaryFramework/Events/zipball/af2bd96815775fe7e40afade374286f3369a7772",
+                "reference": "af2bd96815775fe7e40afade374286f3369a7772",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ElementaryFramework\\Core\\Events\\": "src/Core/Events/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nana Axel",
+                    "email": "ax.lnana@outlook.com"
+                }
+            ],
+            "description": "Shared project to manage and handle events",
+            "keywords": [
+                "Buffer",
+                "async",
+                "stream"
+            ],
+            "time": "2019-08-06T09:25:14+00:00"
+        },
+        {
+            "name": "elementaryframework/fire-fs",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ElementaryFramework/FireFS.git",
+                "reference": "b40ddf011dee2bc2d4b7bb9a8f5c85991079f107"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ElementaryFramework/FireFS/zipball/b40ddf011dee2bc2d4b7bb9a8f5c85991079f107",
+                "reference": "b40ddf011dee2bc2d4b7bb9a8f5c85991079f107",
+                "shasum": ""
+            },
+            "require": {
+                "elementaryframework/events": "^0.0.1",
+                "elementaryframework/streams": "^0.0.2",
+                "php": "^7.1.10"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ElementaryFramework\\FireFS\\": "src/FireFS/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Axel Nana",
+                    "email": "ax.lnana@outlook.com"
+                }
+            ],
+            "description": "Easily access and manage your files with PHP",
+            "keywords": [
+                "files",
+                "filesystem"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AGAQAC3W4ZRMA&source=url",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-06-22T22:07:04+00:00"
+        },
+        {
+            "name": "elementaryframework/streams",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ElementaryFramework/Streams.git",
+                "reference": "2ed6a8698776ab3645b6f02f5c872a7058cd1870"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ElementaryFramework/Streams/zipball/2ed6a8698776ab3645b6f02f5c872a7058cd1870",
+                "reference": "2ed6a8698776ab3645b6f02f5c872a7058cd1870",
+                "shasum": ""
+            },
+            "require": {
+                "elementaryframework/events": "^0.0.1",
+                "php": "^7.1.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ElementaryFramework\\Core\\Streams\\": "src/Core/Streams/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nana Axel",
+                    "email": "ax.lnana@outlook.com"
+                }
+            ],
+            "description": "Shared project for streams operations across the framework",
+            "keywords": [
+                "async",
+                "emitter",
+                "event"
+            ],
+            "time": "2019-08-28T09:13:33+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -561,6 +695,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -607,6 +742,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
@@ -3269,6 +3405,49 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2019-10-24T08:53:34+00:00"
+        },
+        {
+            "name": "tohidplus/laravel-vue-translation",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tohidplus/laravel-vue-translation.git",
+                "reference": "201fa6e92f49728b9f597f31b21213c46ea738a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tohidplus/laravel-vue-translation/zipball/201fa6e92f49728b9f597f31b21213c46ea738a8",
+                "reference": "201fa6e92f49728b9f597f31b21213c46ea738a8",
+                "shasum": ""
+            },
+            "require": {
+                "elementaryframework/fire-fs": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tohidplus\\Translation\\TranslationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tohidplus\\Translation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tohid",
+                    "email": "tohid.dadashnejad@gmail.com"
+                }
+            ],
+            "description": "A package to have Laravel translation feature in VueJs",
+            "time": "2020-01-05T15:03:17+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -5949,10 +6128,11 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0.0"
+        "php": ">=7.3"
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.2.5"
-    }
+        "php": "7.3"
+    },
+    "plugin-api-version": "1.1.0"
 }

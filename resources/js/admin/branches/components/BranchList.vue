@@ -6,14 +6,14 @@
             <div class="d-flex flex-row">
                 <div class="flex-grow-1 pa-2">
                     <v-btn @click="$router.push({name:'branches.create'})" class="specialPrimary lighten-1" dark>
-                        New Branch
+                        {{ translate('branch.new_branch')}}
                         <v-icon right dark>add</v-icon>
                     </v-btn>
                 </div>
             </div>
             <div class="d-flex flex-lg-row flex-sm-column">
                 <div class="flex-grow-1 pa-2">
-                    <v-text-field filled prepend-icon="search" label="Filter By Name" v-model="filters.name"></v-text-field>
+                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_name')"  v-model="filters.name"></v-text-field>
                 </div>
             </div>
         </v-card>
@@ -67,11 +67,11 @@
         data () {
             return {
                 headers: [
-                    { text: 'Action', value: false, align: 'left', sortable: false },
-                    { text: 'ID', value: 'id', align: 'left', sortable: false },
-                    { text: 'key', value: 'name', align: 'left', sortable: false },
-                    { text: 'Created At', value: 'created_at', align: 'left', sortable: false },
-                    { text: 'Updated At', value: 'updated_at', align: 'left', sortable: false },
+                    { text: this.translate('common.action'), value: false, align: 'left', sortable: false },
+                    { text:  this.translate('common.id'), value: 'id', align: 'left', sortable: false },
+                    { text: this.translate('common.key'), value: 'name', align: 'left', sortable: false },
+                    { text:  this.translate('common.created_at'), value: 'created_at', align: 'left', sortable: false },
+                    { text:  this.translate('common.updated_at'), value: 'updated_at', align: 'left', sortable: false },
                 ],
                 items: [],
                 totalItems: 0,
@@ -101,7 +101,7 @@
             });
 
             self.$store.commit('setBreadcrumbs',[
-                            {label:'Branch List',name:''}
+                            {label:this.translate('common.branches_list'),name:''}
             ]);
         
         },
@@ -141,8 +141,8 @@
                 self.$store.commit('showDialog',{
                     type: "confirm",
                     icon: 'warning',
-                    title: "Confirm Deletion",
-                    message: "Are you sure you want to delete this user?",
+                    title: this.translate('common.confirm_deletion'),
+                    message: this.translate('common.are_you_sure_for_delete_this_user'),
                     okCb: ()=>{
 
                         axios.delete('/admin/branches/' + item.id).then(function(response) {

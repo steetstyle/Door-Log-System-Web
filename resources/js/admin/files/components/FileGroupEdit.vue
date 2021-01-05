@@ -36,11 +36,11 @@
                 isLoading: false,
                 name: '',
                 nameRules: [
-                    (v) => !!v || 'Name is required',
+                    (v) => !!v || this.translate('common.name_is_required'),
                 ],
                 description: '',
                 descriptionRules: [
-                    (v) => !!v || 'Description is required',
+                    (v) => !!v || this.translate('common.description_is_required'),
                 ],
             }
         },

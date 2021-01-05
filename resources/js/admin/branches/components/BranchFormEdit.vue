@@ -2,7 +2,7 @@
     <div>
         <v-card>
             <v-card-title>
-                <v-icon>list</v-icon> Edit Branch
+                <v-icon>list</v-icon> {{ translate('branch.edit_branch')}}
             </v-card-title>
             <v-divider class="mb-2"></v-divider>
             <v-form v-model="valid" ref="branchFormEdit" lazy-validation>
@@ -13,7 +13,7 @@
                     </v-flex>
                     <v-flex xs12 sm8>
                         <v-select
-                                label="Select Users"
+                                v-bind:label="translate('common.select_users')"
                                 v-bind:items="options.users"
                                 v-model="selectedUser"
                                 item-text="name"
@@ -23,7 +23,7 @@
                   
                     <v-flex xs12 sm4>
                         <v-btn @click="addUser()" class="specialPrimary lighten-1" dark>
-                            Add User
+                            {{ translate('common.add_user')}}
                             <v-icon right>add</v-icon>
                         </v-btn>
                     </v-flex>
@@ -32,11 +32,11 @@
                             <v-chip v-for="(p,k) in branch_users" :key="k" @click:close="removeUser(p)" close class="white--text" :class="{'green':(p.value==1),'red':(p.value==-1),'blue':(p.value==0)}">
                                 {{p.name}}
                             </v-chip>
-                            <div v-if="branch_users && branch_users.length===0">No Special User assigned.</div>
+                            <div v-if="branch_users && branch_users.length===0">{{ translate('common.special_user_assigned') }}</div>
                         </div>
                     </v-flex>
                     <v-flex xs12>
-                        <v-btn @click="save()" :disabled="!valid" color="lighten" dark>Update</v-btn>
+                        <v-btn @click="save()" :disabled="!valid" color="lighten" dark>{{ translate('common.update')}}</v-btn>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -60,7 +60,7 @@
                 valid: false,
                 name: '',
                 nameRules: [
-                    (v) => !!v || 'Name is required',
+                    (v) => !!v || this.translate('common.name_is_required'),
                 ],
                 selectedUser:null,
                 branch_users: [],
@@ -99,7 +99,7 @@
             });
 
             this.$store.commit('setBreadcrumbs',[
-                {label:'Branches',to:{name:'branches.list'}},
+                {label:this.translate('common.branches'),to:{name:'branches.list'}},
             ]);
 
         },
@@ -158,9 +158,9 @@
                     self.name = branch.name;
 
                     self.$store.commit('setBreadcrumbs',[
-                        {label:'Branches',to:{name:'branches.list'}},
+                        {label:this.translate('common.branches'),to:{name:'branches.list'}},
                         {label:branch.name,to:''},
-                        {label:'Edit',to:''},
+                        {label:this.translate('common.edit'),to:''},
                     ]);
 
                     cb();
@@ -210,8 +210,8 @@
                 const self = this;
                 self.$store.commit('showDialog',{
                     type: "confirm",
-                    title: "Confirm Deletion",
-                    message: "Are you sure you want to delete use in this branch?",
+                    title: this.translate('common.confirm_deletion'),
+                    message: this.translate('common._are_you_sure_for_delete_this_branch'),
                     okCb: ()=>{
 
                         let params = {

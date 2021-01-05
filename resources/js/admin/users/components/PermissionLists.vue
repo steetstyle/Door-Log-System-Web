@@ -66,9 +66,9 @@
         data () {
             return {
                 headers: [
-                    { text: 'Action', value: false, align: 'left', sortable: false },
+                    { text: this.translate('common.action'), value: false, align: 'left', sortable: false },
                     { text: 'Title', value: 'name', align: 'left', sortable: false },
-                    { text: 'Key', value: 'key', align: 'left', sortable: false },
+                    { text:  this.translate('common.key'), value: 'key', align: 'left', sortable: false },
                     { text: 'Description', value: 'description', align: 'left', sortable: false },
                     { text: 'Date Created', value: 'created_at', align: 'left', sortable: false },
                 ],
@@ -97,8 +97,8 @@
             const self = this;
 
             self.$store.commit('setBreadcrumbs',[
-                {label:'Users',to:{name:'users.list'}},
-                {label:'Permissions',name:''},
+                {label:this.translate('common.users'),to:{name:'users.list'}},
+                {label:this.translate('common.permissions'),name:''},
             ]);
         },
         watch: {
@@ -119,7 +119,7 @@
 
                 self.$store.commit('showDialog',{
                     type: "confirm",
-                    title: "Confirm Deletion",
+                    title: this.translate('common.confirm_deletion'),
                     message: "Are you sure you want to delete this permission?",
                     okCb: ()=>{
 

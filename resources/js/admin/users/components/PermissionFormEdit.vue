@@ -20,10 +20,10 @@
                             <v-text-field label="Permission Key" v-model="permissionKey" :rules="permissionKeyRules"></v-text-field>
                         </v-flex>
                         <v-flex xs12>
-                            <v-textarea label="Description" v-model="description" :rules="descriptionRules"></v-textarea>
+                            <v-textarea v-bind:label="translate('common.description')" v-model="description" :rules="descriptionRules"></v-textarea>
                         </v-flex>
                         <v-flex xs12>
-                            <v-btn @click="save()" :loading="isLoading" :disabled="!valid || isLoading" color="lighten" dark>Save</v-btn>
+                            <v-btn @click="save()" :loading="isLoading" :disabled="!valid || isLoading" color="lighten" dark>{{ translate('common.save') }}</v-btn>
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -51,7 +51,7 @@
                 ],
                 description: '',
                 descriptionRules: [
-                    (v) => !!v || 'Description is required',
+                    (v) => !!v || this.translate('common.description_is_required'),
                 ],
                 permissionKey: '',
                 permissionKeyRules: [
@@ -127,10 +127,10 @@
                     self.permissionKey = Permission.key;
 
                     self.$store.commit('setBreadcrumbs',[
-                        {label:'Users',to:{name:'users.list'}},
-                        {label:'Permissions',to:{name:'users.permissions.list'}},
+                        {label:this.translate('common.users'),to:{name:'users.list'}},
+                        {label:this.translate('common.permissions'),to:{name:'users.permissions.list'}},
                         {label:Permission.title,name:''},
-                        {label:'Edit',name:''},
+                        {label:this.translate('common.edit'),name:''},
                     ]);
 
                     (cb || Function)();

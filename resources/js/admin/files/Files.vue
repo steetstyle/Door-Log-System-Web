@@ -6,7 +6,7 @@
                 Files
             </v-tab>
             <v-tab class="white--text" key="manage-groups" href="#manage-groups" ripple>
-                Manage File Groups
+                Manage File {{ translate('common.groups') }}
             </v-tab>
             <v-tab class="white--text" key="upload" href="#upload" ripple>
                 Upload

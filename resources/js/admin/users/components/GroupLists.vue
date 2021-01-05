@@ -5,7 +5,7 @@
         <v-card>
             <div class="d-flex flex-row">
                 <div class="flex-grow-1 pa-2">
-                    <v-text-field prepend-icon="search" label="Filter By Name" v-model="filters.name"></v-text-field>
+                    <v-text-field prepend-icon="search" v-bind:label="translate('common.filter_by_name')"  v-model="filters.name"></v-text-field>
                 </div>
                 <div class="flex-grow-1 pa-2 text-right">
                     <v-btn @click="$router.push({name:'users.groups.create'})" class="specialPrimary lighten-1" dark>
@@ -78,9 +78,9 @@
         data () {
             return {
                 headers: [
-                    { text: 'Action', value: false, align: 'left', sortable: false },
-                    { text: 'Name', value: 'name', align: 'left', sortable: false },
-                    { text: 'Permissions', value: 'permissions', align: 'left', sortable: false },
+                    { text: this.translate('common.action'), value: false, align: 'left', sortable: false },
+                    { text: this.translate('common.name'), value: 'name', align: 'left', sortable: false },
+                    { text: this.translate('common.permissions'), value: 'permissions', align: 'left', sortable: false },
                     { text: 'Total Members', value: 'members_count', align: 'left', sortable: false },
                     { text: 'Date Created', value: 'created_at', align: 'left', sortable: false },
                 ],
@@ -106,8 +106,8 @@
             const self = this;
 
             self.$store.commit('setBreadcrumbs',[
-                {label:'Users',to:{name:'users.list'}},
-                {label:'Groups',to:''},
+                {label:this.translate('common.users'),to:{name:'users.list'}},
+                {label:this.translate('common.groups'),to:''},
             ]);
         },
         watch: {
@@ -128,7 +128,7 @@
 
                 self.$store.commit('showDialog',{
                     type: "confirm",
-                    title: "Confirm Deletion",
+                    title: this.translate('common.confirm_deletion'),
                     message: "Are you sure you want to delete this group?",
                     okCb: ()=>{
 

@@ -8,13 +8,13 @@
                 </div>
                 <div class="flex-grow-1 pa-2">
                     <center>
-                    <h1 style="font-size:50px;"> FILTERS</h1>
+                    <h1 style="font-size:50px;"> {{ translate('common.filters')}}</h1>
                     </center>
-                    <v-text-field filled prepend-icon="search" label="Filter By Name" v-model="filters.name"></v-text-field>
-                    <v-text-field filled prepend-icon="search" label="Filter By Key" v-model="filters.key"></v-text-field>
-                    <v-text-field filled prepend-icon="search" label="Filter By Branch" v-model="filters.branchName"></v-text-field>
+                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_name')"  v-model="filters.name"></v-text-field>
+                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_key')" v-model="filters.key"></v-text-field>
+                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_branch')" v-model="filters.branchName"></v-text-field>
                      <v-btn block @click="clearFilters()" class="specialPrimary lighten-1" dark>
-                        CLEAR FILTERS
+                        {{ translate('common.clear_filters')}}
                         <v-icon right dark>remove</v-icon>
                     </v-btn>
                 </div>
@@ -75,13 +75,13 @@
         data () {
             return {
                 headers: [
-                    { text: 'Action', value: false, align: 'left', sortable: false },
-                    { text: 'ID', value: 'id', align: 'left', sortable: true },
-                    { text: 'Key', value: 'key', align: 'left', sortable: false },
-                    { text: 'Place', value: 'place', align: 'left', sortable: true },
-                    { text: 'Card User Name', value: 'first_name', align: 'left', sortable: true },
-                    { text: 'Created At', value: 'created_at', align: 'left', sortable: true },
-                    { text: 'Updated At', value: 'updated_at', align: 'left', sortable: true },
+                    { text: this.translate('common.action'), value: false, align: 'left', sortable: false },
+                    { text:  this.translate('common.id'), value: 'id', align: 'left', sortable: true },
+                    { text:  this.translate('common.key'), value: 'key', align: 'left', sortable: false },
+                    { text:  this.translate('common.place'), value: 'place', align: 'left', sortable: true },
+                    { text:  this.translate('common.card_user_name'), value: 'first_name', align: 'left', sortable: true },
+                    { text:  this.translate('common.created_at'), value: 'created_at', align: 'left', sortable: true },
+                    { text:  this.translate('common.updated_at'), value: 'updated_at', align: 'left', sortable: true },
                 ],
                 items: [],
                 totalItems: 0,
@@ -111,7 +111,7 @@
             self.loadCardLogins(()=>{});
 
             self.$store.commit('setBreadcrumbs',[
-                            {label:'Card Logins',name:''}
+                            {label:this.translate('common.card_logins'),name:''}
             ]);
         },
         watch: {

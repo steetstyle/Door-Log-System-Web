@@ -6,25 +6,25 @@
             <div class="d-flex flex-row">
                 <div class="flex-grow-1 pa-2">
                     <v-btn @click="$router.push({name:'users.create'})" class="specialPrimary lighten-1" dark>
-                        New User
+                       {{ translate('users.create_user')}}
                         <v-icon right dark>add</v-icon>
                     </v-btn>
                 </div>
                 <div class="flex-grow-1 pa-2">
                     <v-btn @click="$router.push({name:'users.groups.list'})" class="specialPrimary lighten-1 float-right" dark>
-                        Manage Groups <v-icon right dark>group</v-icon>
+                        {{ translate('common.manage_groups') }} <v-icon right dark>group</v-icon>
                     </v-btn>
                     <v-btn @click="$router.push({name:'users.permissions.list'})" class="specialPrimary lighten-1 float-right mr-2" dark>
-                        Manage Permissions <v-icon right dark>vpn_key</v-icon>
+                         {{ translate('common.manage_permissions') }} <v-icon right dark>vpn_key</v-icon>
                     </v-btn>
                 </div>
             </div>
             <div class="d-flex flex-lg-row flex-sm-column">
                 <div class="flex-grow-1 pa-2">
-                    <v-text-field filled prepend-icon="search" label="Filter By Name" v-model="filters.name"></v-text-field>
+                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_name')"  v-model="filters.name"></v-text-field>
                 </div>
                 <div class="flex-grow-1 pa-2">
-                    <v-text-field filled prepend-icon="search" label="Filter By Email" v-model="filters.email"></v-text-field>
+                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_email')" v-model="filters.email"></v-text-field>
                 </div>
                 <div class="flex-grow-1 pa-2">
                     <v-autocomplete filled
@@ -33,7 +33,7 @@
                                     deletable-chips
                                     clearable
                                     prepend-icon="filter_list"
-                                    label="Filter By Groups"
+                                    v-bind:label="translate('common.filter_by_groups')"
                                     :items="filters.groupOptions"
                                     item-text="name"
                                     item-value="id"
@@ -86,7 +86,7 @@
                         <td>{{ item.name }}</td>
                         <td>{{ item.email }}</td>
                         <td>
-                            <v-btn small @click="showDialog('user_permissions',item.permissions)" outlined rounded color="grey" dark>Show</v-btn>
+                            <v-btn small @click="showDialog('user_permissions',item.permissions)" outlined rounded color="grey" dark>{{ translate('common.show')}}</v-btn>
                             
                         </td>
                         <td>
@@ -112,7 +112,7 @@
         <v-dialog v-model="dialogs.showPermissions.show" absolute max-width="300px">
             <v-card>
                 <v-card-title>
-                    <div class="headline"><v-icon>vpn_key</v-icon> User Permissions</div>
+                    <div class="headline"><v-icon>vpn_key</v-icon>{{ translate('common.user_permissions')}}</div>
                 </v-card-title>
                 <v-card-text>
                     <v-chip v-for="(permission,key) in dialogs.showPermissions.items" :key="key" class="white--text ma-1" :class="{'green':(permission.value==1),'red':(permission.value==-1),'blue':(permission.value==0)}">
@@ -127,7 +127,7 @@
                         </v-avatar>
                         {{permission.title}}
                     </v-chip>
-                    <p v-if="dialogs.showPermissions.items.length==0">No permissions</p>
+                    <p v-if="dialogs.showPermissions.items.length==0">{{ translate('common.no_permission')</p>
                 </v-card-text>
             </v-card>
         </v-dialog>
@@ -140,13 +140,13 @@
         data () {
             return {
                 headers: [
-                    { text: 'Action', value: false, align: 'left', sortable: false },
-                    { text: 'Name', value: 'name', align: 'left', sortable: false },
-                    { text: 'Email', value: 'email', align: 'left', sortable: false },
-                    { text: 'Permissions', value: 'permissions', align: 'left', sortable: false },
-                    { text: 'Groups', value: 'groups', align: 'left', sortable: false },
-                    { text: 'Last Login', value: 'last_login', align: 'left', sortable: false },
-                    { text: 'Active', value: 'active', align: 'center', sortable: false },
+                    { text: this.translate('common.action'), value: false, align: 'left', sortable: false },
+                    { text: this.translate('common.name'), value: 'name', align: 'left', sortable: false },
+                    { text: this.translate('common.email'), value: 'email', align: 'left', sortable: false },
+                    { text: this.translate('common.permissions'), value: 'permissions', align: 'left', sortable: false },
+                    { text: this.translate('common.groups'), value: 'groups', align: 'left', sortable: false },
+                    { text: this.translate('common.last_login'), value: 'last_login', align: 'left', sortable: false },
+                    { text: this.translate('common.active'), value: 'active', align: 'center', sortable: false },
                 ],
                 items: [],
                 totalItems: 0,
@@ -179,7 +179,7 @@
             });
 
             self.$store.commit('setBreadcrumbs',[
-                {label:'Users',to:{name:'users.list'}},
+                {label:this.translate('common.users'),to:{name:'users.list'}},
             ]);
         },
         watch: {
@@ -208,8 +208,8 @@
                 self.$store.commit('showDialog',{
                     type: "confirm",
                     icon: 'warning',
-                    title: "Confirm Deletion",
-                    message: "Are you sure you want to delete this user?",
+                    title: this.translate('common.confirm_deletion'),
+                    message: this.translate('common.are_you_sure_for_delete_this_user'),
                     okCb: ()=>{
 
                         axios.delete('/admin/users/' + user.id).then(function(response) {

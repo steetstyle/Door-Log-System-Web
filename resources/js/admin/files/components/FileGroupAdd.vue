@@ -14,7 +14,7 @@
                             <v-textarea label="Group Description" v-model="description" :rules="descriptionRules"></v-textarea>
                         </v-flex>
                         <v-flex xs12>
-                            <v-btn @click="save()" :disabled="!valid" color="lighten">Save</v-btn>
+                            <v-btn @click="save()" :disabled="!valid" color="lighten">{{ translate('common.save') }}</v-btn>
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -31,11 +31,11 @@
                 isLoading: false,
                 name: '',
                 nameRules: [
-                    (v) => !!v || 'Name is required',
+                    (v) => !!v || this.translate('common.name_is_required'),
                 ],
                 description: '',
                 descriptionRules: [
-                    (v) => !!v || 'Description is required',
+                    (v) => !!v || this.translate('common.description_is_required'),
                 ],
             }
         },

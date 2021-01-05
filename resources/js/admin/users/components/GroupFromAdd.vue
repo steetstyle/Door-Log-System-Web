@@ -18,7 +18,7 @@
                     </v-flex>
                     <v-flex xs12 sm4>
                         <v-select
-                                label="Select Permission"
+                                label="translate('common.select_permission')"
                                 v-bind:items="options.permissions"
                                 v-model="selectedPermission"
                                 item-text="title"
@@ -27,7 +27,7 @@
                     </v-flex>
                     <v-flex xs12 sm4>
                         <v-select
-                                label="Permission Value"
+                                label="translate('common.permission_value')"
                                 v-bind:items="options.permissionValues"
                                 v-model="selectedPermissionValue"
                                 item-text="label"
@@ -36,7 +36,7 @@
                     </v-flex>
                     <v-flex xs12 sm4>
                         <v-btn @click="addSpecialPermission()" class="specialPrimary lighten-1" dark>
-                            Add Permission
+                           {{ translate('common.add_permission') }}
                             <v-icon right>add</v-icon>
                         </v-btn>
                     </v-flex>
@@ -54,11 +54,11 @@
                                 </v-avatar>
                                 {{p.title}}
                             </v-chip>
-                            <div v-if="permissions.length===0">No special permissions assigned.</div>
+                            <div v-if="permissions.length===0">{{ translate('common.no_special_permissions_assigned') }}</div>
                         </div>
                     </v-flex>
                     <v-flex xs12>
-                        <v-btn @click="save()" :disabled="!valid" color="lighten" dark>Save</v-btn>
+                        <v-btn @click="save()" :disabled="!valid" color="lighten" dark>{{ translate('common.save') }}</v-btn>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -76,7 +76,7 @@
                 valid: false,
                 name: '',
                 nameRules: [
-                    (v) => !!v || 'Name is required',
+                    (v) => !!v || this.translate('common.name_is_required'),
                 ],
                 permissions: [],
                 selectedPermission: {},
@@ -85,8 +85,8 @@
                 options: {
                     permissions: [],
                     permissionValues:[
-                        {label:'Allow', value:1},
-                        {label:'Deny', value:-1},
+                        {label:this.translate('common.allow'), value:1},
+                        {label:this.translate('common.deny'), value:-1},
                     ],
                 }
             }
@@ -97,9 +97,9 @@
             self.loadPermissions(()=>{});
 
             self.$store.commit('setBreadcrumbs',[
-                {label:'Users',to:{name:'users.list'}},
-                {label:'Groups',to:{name:'users.groups.list'}},
-                {label:'Create',to:''},
+                {label:this.translate('common.users'),to:{name:'users.list'}},
+                {label:this.translate('common.groups'),to:{name:'users.groups.list'}},
+                {label:this.translate('common.create'),to:''},
             ]);
         },
         methods: {

@@ -2,18 +2,18 @@
     <div>
         <v-card>
             <v-card-title>
-                <v-icon>list</v-icon> Edit Card
+                <v-icon>list</v-icon> {{ translate('card.edit_card')}}
             </v-card-title>
             <v-divider class="mb-2"></v-divider>
             <v-form v-model="valid" ref="cardFormEdit" lazy-validation>
                 <v-container grid-list-md>
                 <v-layout row wrap>
                     <v-flex xs12 sm12>
-                        <v-text-field label="Key" v-model="key" :rules="keyRules"></v-text-field>
+                        <v-text-field v-bind:label="translate('common.key')" v-model="key" :rules="keyRules"></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm8>
                         <v-select
-                                label="Select Branches"
+                                v-bind:label="translate('common.select_branches')"
                                 v-bind:items="options.branches"
                                 v-model="selectedBranch"
                                 item-text="name"
@@ -22,7 +22,7 @@
                     </v-flex>
                      <v-flex xs12 sm8>
                         <v-select
-                                label="Select User"
+                                v-bind:label="translate('common.select_branches')"
                                 v-bind:items="options.users"
                                 v-model="selectedUser"
                                 item-text="name"
@@ -31,7 +31,7 @@
                     </v-flex>
                   
                     <v-flex xs12>
-                        <v-btn @click="save()" :disabled="!valid" color="lighten" dark>Update</v-btn>
+                        <v-btn @click="save()" :disabled="!valid" color="lighten" dark>{{ translate('common.update')}}</v-btn>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -56,7 +56,7 @@
                 key: '',
                 id: '',
                 keyRules: [
-                    (v) => !!v || 'Key is required',
+                    (v) => !!v || this.translate('common.key_is_required'),
                 ],
                 selectedUser:null,
                 selectedBranch:null,
@@ -93,7 +93,7 @@
             this.loadBranches(()=>{this.loadUsers(()=>{this.loadCard(()=>{})})});
 
             this.$store.commit('setBreadcrumbs',[
-                {label:'Cards',to:{name:'cards.list'}},
+                {label:this.translate('card.title'),to:{name:'cards.list'}},
             ]);
 
         },
