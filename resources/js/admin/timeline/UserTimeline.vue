@@ -10,12 +10,31 @@
             </v-card>
         </v-dialog>
 
-         <!-- dialog for show permissions -->
+        <!-- dialog for show permissions -->
         <v-dialog v-model="dialogs.showEditForm.show" absolute  max-width="660px">
             <v-card>
                 <v-card-text>
                 <v-btn style=" position: fixed; top: 25px;" large m15 @click="closeDialog('dayoff_edit', item)" outlined rounded color="grey" dark>{{ translate('common.back')}}</v-btn>
                  <DayOffEdit :id="dialogs.showEditForm.item !== null ? dialogs.showEditForm.item.id : null"/>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
+
+        <!-- dialog for show permissions -->
+        <v-dialog v-model="dialogs.showCardLogAddForm" absolute  max-width="660px">
+            <v-card>
+                <v-card-text>
+                    <CardLoginAdd />
+                </v-card-text>
+            </v-card>
+        </v-dialog>
+
+        <!-- dialog for show permissions -->
+        <v-dialog v-model="dialogs.showLogEditForm.show" absolute  max-width="660px">
+            <v-card>
+                <v-card-text>
+                <v-btn style=" position: fixed; top: 25px;" large m15 @click="closeDialog('log_edit', null)" outlined rounded color="grey" dark>{{ translate('common.back')}}</v-btn>
+                 <CardLoginEdit :on_delete="closeDialog" :id="dialogs.showLogEditForm.item !== null ? dialogs.showLogEditForm.item.id : null"/>
                 </v-card-text>
             </v-card>
         </v-dialog>
@@ -101,8 +120,14 @@
             <v-btn @click="showDialog('create_form',{})"  color="lighten" dark>{{ translate('common.add_day_off')}}</v-btn>
             <v-btn @click="showDialog('timeline_list',{})"  color="lighten" dark>{{ translate('common.show_as_list')}}</v-btn>
             <v-btn @click="showDialog('dayoff_list',{})"  color="lighten" dark>{{ translate('common.show_day_off_list') }}</v-btn>
+            <v-btn @click="showDialog('create_cardlog',{})"  color="lighten" dark>{{ translate('common.create_day_log') }}</v-btn>
         </v-flex>
-        <full-calendar :events="fcEvents"  locale="tr" ></full-calendar>
+        <full-calendar 
+                    :events="fcEvents"   
+                    @eventClick="eventClick"
+                    @dayClick="dayClick" 
+                    @moreClick="moreClick"
+                    locale="tr" ></full-calendar>
     </div>
 </template>
 
@@ -125,7 +150,14 @@
             }, 
             dayoffList: function () {
                 return this.dialogs.showdayOffList.pagination.page;
+            },  
+            showCardLogAddForm: function () {
+                return this.dialogs.showCreateCardLogForm.show;
             }, 
+            showCardLogEditForm: function () {
+                return this.dialogs.showCardLogEditForm.show;
+            }, 
+           
         },
 
         watch: {
@@ -139,6 +171,7 @@
                     this.retrieveDayOffListDataFromApi(false);
                 },
             },
+            
         },
 
         data() {
@@ -193,6 +226,13 @@
                         ]
                     
                     },
+                    showCreateCardLogForm: {
+                        show: false
+                    },
+                    showLogEditForm:{
+                        item: null,
+                        show: false
+                    },
                     showTimeline: {
                         show: false,
                         items: [],
@@ -221,6 +261,12 @@
             this.$eventBus.$on(['DAYOFF_UPDATED'],()=>{
                 this.retrieveDayOffListDataFromApi(false);
             });
+
+            this.$eventBus.$on(['CARDLOGIN_DELETED', 'CARDLOGIN_UPDATED'],()=>{
+                this.retrieveDayOffListDataFromApi(false);
+                this.dialogs.showLogEditForm.show = false;
+            });
+
             this.$store.commit('setBreadcrumbs',[
                 {label:this.translate('common.dayoff'),to:''},
             ]);
@@ -319,7 +365,7 @@
                             branch : cardLoginLog.branch != null  ? cardLoginLog.branch.name : " ",
                             cssClass : [DetermineIsLate ? "toolate" : !DetermineIsLate && todayLogs.length < 1 ? 
                                                         "firstlogin" : !isFirstLoginThatDay ? todayLogs_last_element.title.includes("Giriş") ? 
-                                                        "exit" : "login" : "undetermined",]
+                                                        "exit" : "login" : "undetermined", "id" + cardLoginLog.id]
                         });
                         counter++;
                     });
@@ -361,7 +407,18 @@
                 return new Date(dt.getTime() +  splittedTime[0]*60*60000 + splittedTime[1]*60000);
             },
             dayClick (day, jsEvent) {
-                console.log('dayClick', day, jsEvent)
+                console.log('dayClick', day, jsEvent);
+            },
+            eventClick (day, jsEvent, pos) {
+                let event_class= jsEvent.path[0].className;
+                let target_item_id = event_class.split("id")[1].split(" ")[0];
+                axios.get('/admin/cardlogin/'+target_item_id).then((res) => {
+                    this.showDialog('log_edit', res.data.data);   
+                });
+
+            },
+            moreClick (day, events, jsEvent) {
+                console.log('moreClick', event, jsEvent, pos)
             },
             showDialog(dialog, data) {
 
@@ -383,11 +440,22 @@
                             self.dialogs.showdayOffList.show = true;
                         },500);
                         break;
+                    case 'log_edit':
+                        setTimeout(()=>{
+                            self.dialogs.showLogEditForm.item = data;
+                            self.dialogs.showLogEditForm.show = true;
+                        },500);
+                        break;
                     case 'dayoff_edit':
                         self.dialogs.showEditForm.item = data;
                         self.$eventBus.$emit('DAYOFF_UPDATED');
                         setTimeout(()=>{
                             self.dialogs.showEditForm.show = true;
+                        },500);
+                        break;
+                    case 'create_cardlog':
+                         setTimeout(()=>{
+                            self.dialogs.showCreateCardLogForm.show = true;
                         },500);
                         break;
                 }
@@ -408,6 +476,12 @@
                         break;
                     case 'dayoff_edit':
                             self.dialogs.showEditForm.show = false;
+                        break;
+                    case 'log_edit':
+                            self.dialogs.showLogEditForm.show = false;
+                        break;
+                    case 'log_add':
+                            self.dialogs.showCreateCardLogForm.show = false;
                         break;
                 }
             },

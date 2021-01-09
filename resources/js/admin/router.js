@@ -24,10 +24,22 @@ const router = new Router({
             path: "/log",
             component: require("./log/Log"),
             children: [{
-                path: "/",
-                name: "log.list",
-                component: require("./log/components/CardLoginList"),
-            }, ],
+                    path: "/",
+                    name: "log.list",
+                    component: require("./log/components/CardLoginList"),
+                },
+                {
+                    path: "/edit/:id",
+                    name: "log.edit",
+                    component: require("./log/components/CardLoginEdit"),
+                    props: (route) => ({ propId: route.params.id }),
+                },
+                {
+                    path: "/create",
+                    name: "log.create",
+                    component: require("./log/components/CardLoginAdd"),
+                },
+            ],
         },
         {
             path: "/user/timeline/:id",

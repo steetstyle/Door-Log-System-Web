@@ -43,18 +43,63 @@ class CardLoginController extends AdminController
     public function store(Request $request)
     {
         $validate = validator($request->all(),[
-            'name' => 'required',
+            'key' => 'required',
+            'updated_at' => 'required',
+            'branch_id' => 'required',
         ]);
 
         if($validate->fails()) return $this->sendResponseBadRequest($validate->errors()->first());
 
-        /** @var Branch $branch */
-        $branch = $this->cardLoginRepository->create($request->all());
+        /** @var CardLogin $cardLogin */
+        $cardLogin = $this->cardLoginRepository->create($request->only('key', 'updated_at', 'branch_id'));
 
-        if(!$branch) return $this->sendResponseBadRequest("Failed create.");
+        if(!$cardLogin) return $this->sendResponseBadRequest("Failed create.");
         
-        return $this->sendResponseCreated($branch);
+        return $this->sendResponseCreated($cardLogin);
     }
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $card = $this->cardLoginRepository->find($id);
+
+        if(!$card) return $this->sendResponseNotFound();
+
+        return $this->sendResponseOk($card);
+    }
+
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $validate = validator($request->all(),[
+            'key' => 'required',
+            'updated_at' => 'required',
+            'branch_id' => 'required',
+        ]);
+
+        if($validate->fails()) return $this->sendResponseBadRequest($validate->errors()->first());
+
+        $payload = $request->only('key', 'updated_at', 'branch_id');
+
+        $updated = $this->cardLoginRepository->update($id,$payload);
+
+        if(!$updated) return $this->sendResponseBadRequest("Failed update");
+
+        return $this->sendResponseUpdated();
+    }
+
+    
 
 
     /**
@@ -77,5 +122,23 @@ class CardLoginController extends AdminController
         if(!$cardLogin) return $this->sendResponseBadRequest("Failed create.");
         
         return $this->sendResponseCreated($cardLogin);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        /** @var CardLogin $cardLogin */
+        $cardLogin = $this->cardLoginRepository->find($id);
+
+        if(!$cardLogin) return $this->sendResponseNotFound();
+
+        $this->cardLoginRepository->delete($id);
+
+        return $this->sendResponseDeleted();
     }
 }

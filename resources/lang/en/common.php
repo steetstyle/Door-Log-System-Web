@@ -96,5 +96,8 @@
         'dayoff' => 'Kullanıcı Yoklama',
         'users_count' => 'Kullanıcı Sayısı',
         'branches_count' => 'Şube Sayısı',
-        'cards_count' => 'Kart Sayısı'
+        'cards_count' => 'Kart Sayısı',
+        'login_date' => 'Giriş Tarihi',
+        'create_day_log' => 'Kayıt Ekle',
+        'delete' => 'Sil'
     ];

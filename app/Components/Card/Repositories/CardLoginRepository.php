@@ -67,7 +67,7 @@ class CardLoginRepository extends BaseRepository
         }
 
 
-        $query = $query->select("*", 'card_login.created_at as log')->orderBy('card_login.id', 'DESC');
+        $query = $query->select("*", 'card_login.created_at as log', "card_login.id as id")->orderBy('card_login.id', 'DESC');
 
         $page_params = [
             'page' => array_key_exists('page', $params) ?  $params['page'] -1 : 0,

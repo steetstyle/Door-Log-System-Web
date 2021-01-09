@@ -58,6 +58,8 @@ Vue.use(VueProgressBar, {
 Vue.component("moon-loader", require("vue-spinner/src/MoonLoader.vue"));
 Vue.component("DayOffAdd", require("./users/components/DayOffAdd.vue"));
 Vue.component("DayOffEdit", require("./users/components/DayOffEdit.vue"));
+Vue.component("CardLoginAdd", require("./log/components/CardLoginAdd.vue"));
+Vue.component("CardLoginEdit", require("./log/components/CardLoginEdit.vue"));
 
 // app
 import router from "./router";

@@ -22,7 +22,7 @@
                     </v-flex>
                      <v-flex xs12 sm8>
                         <v-select
-                                v-bind:label="translate('common.select_branches')"
+                                v-bind:label="translate('common.select_user')"
                                 v-bind:items="options.users"
                                 v-model="selectedUser"
                                 item-text="name"

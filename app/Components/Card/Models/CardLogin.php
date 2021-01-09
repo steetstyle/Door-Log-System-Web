@@ -28,7 +28,7 @@ class CardLogin extends Model
      *
      * @var array
      */
-    protected $fillable = ['key', 'branch_id'];
+    protected $fillable = ['key', 'branch_id', 'updated_at'];
 
     protected $appends = ['card', 'branch', 'user'];
 
