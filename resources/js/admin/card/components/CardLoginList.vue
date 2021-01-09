@@ -61,8 +61,8 @@
                         <td>{{ item.key }}</td>
                         <td>{{ item.branch != null ? item.branch.name : '' }}</td>
                         <td>{{ item.user != null  ? item.user.name: '' }}</td>
-                        <td>{{ item.created_at }}</td>
-                        <td>{{ item.updated_at }}</td>
+                        <td>{{ convertDateToString( item.created_at) }}</td>
+                        <td>{{ convertDateToString( item.updated_at) }}</td>
                     </tr>
                 </tbody>
             </template>

@@ -89,12 +89,7 @@
                             <v-btn small @click="showDialog('user_permissions',item.permissions)" outlined rounded color="grey" dark>{{ translate('common.show')}}</v-btn>
                             
                         </td>
-                        <td>
-                            <v-chip v-for="group in item.groups" :key="group.id" outlined color="grey" text-color="white">
-                                {{group.name}}
-                            </v-chip>
-                        </td>
-                        <td>{{ $appFormatters.formatDate(item.last_login) }}</td>
+                        <td>{{ convertDateToString(item.last_login) }}</td>
                         <td class="text-center">
                             <v-avatar outlined>
                                 <v-icon v-if="item.active!=null" class="green--text">check_circle</v-icon>
@@ -127,7 +122,7 @@
                         </v-avatar>
                         {{permission.title}}
                     </v-chip>
-                    <p v-if="dialogs.showPermissions.items.length==0">{{ translate('common.no_permission')</p>
+                    <p v-if="dialogs.showPermissions.items.length==0">{{ translate('common.no_permission') }}</p>
                 </v-card-text>
             </v-card>
         </v-dialog>
@@ -144,7 +139,6 @@
                     { text: this.translate('common.name'), value: 'name', align: 'left', sortable: false },
                     { text: this.translate('common.email'), value: 'email', align: 'left', sortable: false },
                     { text: this.translate('common.permissions'), value: 'permissions', align: 'left', sortable: false },
-                    { text: this.translate('common.groups'), value: 'groups', align: 'left', sortable: false },
                     { text: this.translate('common.last_login'), value: 'last_login', align: 'left', sortable: false },
                     { text: this.translate('common.active'), value: 'active', align: 'center', sortable: false },
                 ],

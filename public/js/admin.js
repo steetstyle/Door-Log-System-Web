@@ -2640,9 +2640,14 @@ __webpack_require__(161);
 window.Vue = __webpack_require__(3);
 // If you want to add to window object
 window.tranlate = __webpack_require__(152).default.translate;
-
+window.convertDateToString = function (date) {
+    return new Date(date).toISOString().slice(0, 19).replace("T", " ");
+};
 // If you want to use it in your vue components
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.prototype.translate = __webpack_require__(152).default.translate;
+__WEBPACK_IMPORTED_MODULE_2_vue___default.a.prototype.convertDateToString = window.convertDateToString = function (date) {
+    return new Date(date).toISOString().slice(0, 19).replace("T", " ");
+};
 // 3rd party
 
 
@@ -63867,7 +63872,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var self = this;
 
             var params = {
-                key: self.filters.key,
+                key: self.filters.tag,
                 name: self.filters.name,
                 start_date: self.filters.start_date,
                 end_date: self.filters.end_date,
@@ -64107,7 +64112,10 @@ var render = function() {
                                 on: {
                                   click: function($event) {
                                     return _vm.$router.push({
-                                      name: "cards.create",
+                                      name:
+                                        item.user == null
+                                          ? "cards.create"
+                                          : "cards.edit",
                                       params: { key: item.key }
                                     })
                                   }
@@ -64131,7 +64139,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
-                          _vm._s(item.branch != null ? item.branch.name : "")
+                          _vm._s(item.branch != null ? item.branch.tag : "")
                         )
                       ]),
                       _vm._v(" "),
@@ -64139,9 +64147,13 @@ var render = function() {
                         _vm._v(_vm._s(item.user != null ? item.user.name : ""))
                       ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.created_at))]),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.convertDateToString(item.created_at)))
+                      ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.updated_at))])
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.convertDateToString(item.updated_at)))
+                      ])
                     ])
                   }),
                   0
@@ -64522,10 +64534,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var counter = 0;
 
                 res.data.data.map(function (cardLoginLog) {
+                    console.log(cardLoginLog);
 
-                    var loginDate = new Date(cardLoginLog.created_at);
+                    var loginDate = new Date(cardLoginLog.log);
 
-                    var thatDay = new Date(cardLoginLog.created_at);
+                    var thatDay = new Date(cardLoginLog.log);
                     thatDay.setHours(0, 0, 0, 0);
 
                     var minimumLoginDate = _this3.add_minutes(thatDay, cardLoginLog.login_time);
@@ -64564,8 +64577,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         card: cardLoginLog.key,
                         title: title,
                         type: type,
-                        start: new Date(cardLoginLog.created_at),
-                        end: new Date(cardLoginLog.created_at),
+                        start: new Date(cardLoginLog.log),
+                        end: new Date(cardLoginLog.log),
                         branch: cardLoginLog.branch != null ? cardLoginLog.branch.name : " ",
                         cssClass: [DetermineIsLate ? "toolate" : !DetermineIsLate && todayLogs.length < 1 ? "firstlogin" : !isFirstLoginThatDay ? todayLogs_last_element.title.includes("Giriş") ? "exit" : "login" : "undetermined"]
                     });
@@ -65036,7 +65049,11 @@ var render = function() {
                               _vm._v(" "),
                               _c("td", [_vm._v(_vm._s(item.branch))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(item.start))]),
+                              _c("td", [
+                                _vm._v(
+                                  _vm._s(_vm.convertDateToString(item.start))
+                                )
+                              ]),
                               _vm._v(" "),
                               _c("td", [_vm._v(_vm._s(item.type))])
                             ])
@@ -65103,7 +65120,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("full-calendar", { attrs: { events: _vm.fcEvents, locale: "en" } })
+      _c("full-calendar", { attrs: { events: _vm.fcEvents, locale: "tr" } })
     ],
     1
   )
@@ -65641,9 +65658,13 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(item.key))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.created_at))]),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.convertDateToString(item.created_at)))
+                      ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.updated_at))])
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.convertDateToString(item.updated_at)))
+                      ])
                     ])
                   }),
                   0
@@ -66758,16 +66779,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            headers: [{ text: this.translate('common.action'), value: false, align: 'left', sortable: false }, { text: this.translate('common.name'), value: 'name', align: 'left', sortable: false }, { text: this.translate('common.email'), value: 'email', align: 'left', sortable: false }, { text: this.translate('common.permissions'), value: 'permissions', align: 'left', sortable: false }, { text: this.translate('common.groups'), value: 'groups', align: 'left', sortable: false }, { text: this.translate('common.last_login'), value: 'last_login', align: 'left', sortable: false }, { text: this.translate('common.active'), value: 'active', align: 'center', sortable: false }],
+            headers: [{ text: this.translate('common.action'), value: false, align: 'left', sortable: false }, { text: this.translate('common.name'), value: 'name', align: 'left', sortable: false }, { text: this.translate('common.email'), value: 'email', align: 'left', sortable: false }, { text: this.translate('common.permissions'), value: 'permissions', align: 'left', sortable: false }, { text: this.translate('common.last_login'), value: 'last_login', align: 'left', sortable: false }, { text: this.translate('common.active'), value: 'active', align: 'center', sortable: false }],
             items: [],
             totalItems: 0,
             pagination: {
@@ -67308,35 +67324,8 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        _vm._l(item.groups, function(group) {
-                          return _c(
-                            "v-chip",
-                            {
-                              key: group.id,
-                              attrs: {
-                                outlined: "",
-                                color: "grey",
-                                "text-color": "white"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(group.name) +
-                                  "\n                        "
-                              )
-                            ]
-                          )
-                        }),
-                        1
-                      ),
-                      _vm._v(" "),
                       _c("td", [
-                        _vm._v(
-                          _vm._s(_vm.$appFormatters.formatDate(item.last_login))
-                        )
+                        _vm._v(_vm._s(_vm.convertDateToString(item.last_login)))
                       ]),
                       _vm._v(" "),
                       _c(
@@ -67465,7 +67454,9 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _vm.dialogs.showPermissions.items.length == 0
-                    ? _c("p", [_vm._v("{{ translate('common.no_permission')")])
+                    ? _c("p", [
+                        _vm._v(_vm._s(_vm.translate("common.no_permission")))
+                      ])
                     : _vm._e()
                 ],
                 2
@@ -72349,9 +72340,13 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(item.name))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.created_at))]),
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.convertDateToString(item.created_at)))
+                      ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.updated_at))])
+                      _c("td", [
+                        _vm._v(_vm._s(_vm.convertDateToString(item.updated_at)))
+                      ])
                     ])
                   }),
                   0

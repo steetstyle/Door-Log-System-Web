@@ -49,17 +49,17 @@
                     <tr v-for="item in items" :key="item.id">
                         <td>
                             <div class="ml-n1 my-1 d-flex justify-space-between align-content-space-around flex-wrap">
-                                <v-btn @click="$router.push({name:'cards.create',params:{key: item.key}})" class="ma-1" small outlined icon color="info">
+                                <v-btn @click="$router.push({name:item.user == null ? 'cards.create' : 'cards.edit',params:{key: item.key}})" class="ma-1" small outlined icon color="info">
                                     <v-icon small>mdi-pencil</v-icon>
                                 </v-btn>
                             </div>
                         </td>
                         <td>{{ item.id }}</td>
                         <td>{{ item.key }}</td>
-                        <td>{{ item.branch != null ? item.branch.name : '' }}</td>
+                        <td>{{ item.branch != null ? item.branch.tag : '' }}</td>
                         <td>{{ item.user != null  ? item.user.name: '' }}</td>
-                        <td>{{ item.created_at }}</td>
-                        <td>{{ item.updated_at }}</td>
+                        <td>{{ convertDateToString(item.created_at)}}</td>
+                        <td>{{ convertDateToString(item.updated_at )}}</td>
                     </tr>
                 </tbody>
             </template>
@@ -158,7 +158,7 @@
                 const self = this;
 
                 let params = {
-                    key: self.filters.key,
+                    key: self.filters.tag,
                     name: self.filters.name,
                     start_date: self.filters.start_date,
                     end_date: self.filters.end_date,

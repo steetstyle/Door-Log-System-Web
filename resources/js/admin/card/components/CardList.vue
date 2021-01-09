@@ -53,8 +53,8 @@
                         </td>
                         <td>{{ item.id }}</td>
                         <td>{{ item.key }}</td>
-                        <td>{{ item.created_at }}</td>
-                        <td>{{ item.updated_at }}</td>
+                        <td>{{ convertDateToString( item.created_at) }}</td>
+                        <td>{{ convertDateToString( item.updated_at) }}</td>
                     </tr>
                 </tbody>
             </template>

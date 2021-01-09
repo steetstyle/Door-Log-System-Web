@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Log Control System</title>
+    <title>{{ config('app.name', 'Personel Yönetim Sistemi')}}</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -87,10 +87,28 @@
             <img class="swiss" src="{{url('img/camper-swiss-knife.jpg')}}">
         </div>
 
-        <div class="links">
-            <h1>Log Control System<span style="color: #F4D8D8"></span></h1>
+        <div class="links" 
+            style="">
+        @auth
+                <a href="{{ url('/admin') }}">{{ config('app.name', 'Personel Yönetim Sistemi')}}</a>
+        @else
+            <a href="{{ route('login') }}">{{ config('app.name', 'Personel Yönetim Sistemi')}}</a>
+        @endauth
         </div>
     </div>
 </div>
 </body>
+<style>
+    .links > a{
+        color: white!important;
+            padding:10px;
+                    height: 55px;
+                    background: #1a365e;
+                    border-radius: 5px;
+        font-size :27px;
+    }
+    .swiss{
+        opacity:1;
+    }
+</style>
 </html>

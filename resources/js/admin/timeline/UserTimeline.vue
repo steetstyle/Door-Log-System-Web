@@ -87,7 +87,7 @@
                                 <td></td>
                                 <td>{{ item.card }}</td>
                                 <td>{{ item.branch }}</td>
-                                <td>{{ item.start }}</td>
+                                <td>{{ convertDateToString(item.start) }}</td>
                                 <td>{{ item.type }}</td>
                             </tr>
                         </tbody>
@@ -102,7 +102,7 @@
             <v-btn @click="showDialog('timeline_list',{})"  color="lighten" dark>{{ translate('common.show_as_list')}}</v-btn>
             <v-btn @click="showDialog('dayoff_list',{})"  color="lighten" dark>{{ translate('common.show_day_off_list') }}</v-btn>
         </v-flex>
-        <full-calendar :events="fcEvents"  locale="en" ></full-calendar>
+        <full-calendar :events="fcEvents"  locale="tr" ></full-calendar>
     </div>
 </template>
 
@@ -265,10 +265,11 @@
                     let counter = 0;
 
                     res.data.data.map((cardLoginLog) => {
+                        console.log(cardLoginLog);
 
-                        let loginDate = new Date(cardLoginLog.created_at);
+                        let loginDate = new Date(cardLoginLog.log);
 
-                        let thatDay = new Date(cardLoginLog.created_at);
+                        let thatDay = new Date(cardLoginLog.log);
                         thatDay.setHours(0,0,0,0);
 
                         let minimumLoginDate = this.add_minutes(thatDay, cardLoginLog.login_time);
@@ -313,8 +314,8 @@
                             card: cardLoginLog.key,
                             title : title ,
                             type: type,
-                            start : new Date(cardLoginLog.created_at),
-                            end : new Date(cardLoginLog.created_at),
+                            start : new Date(cardLoginLog.log),
+                            end : new Date(cardLoginLog.log),
                             branch : cardLoginLog.branch != null  ? cardLoginLog.branch.name : " ",
                             cssClass : [DetermineIsLate ? "toolate" : !DetermineIsLate && todayLogs.length < 1 ? 
                                                         "firstlogin" : !isFirstLoginThatDay ? todayLogs_last_element.title.includes("Giriş") ? 
