@@ -39,10 +39,10 @@ class CardLoginRepository extends BaseRepository
         if(array_key_exists('start_date', $params) && $params['start_date']){
             if(key_exists('end_date', $params) && $params['end_date']){
 
-                $query = $query->whereBetween('card_login.created_at', [$params['start_date']." 00:00:00.000000",$params['end_date']." 23:59:59.000000"]);
+                $query = $query->whereBetween('card_login.updated_at', [$params['start_date']." 00:00:00.000000",$params['end_date']." 23:59:59.000000"]);
             }
             else{
-                $query = $query->whereBetween('card_login.created_at', [$params['start_date']." 00:00:00.000000",$params['start_date']." 23:59:59.000000"]);
+                $query = $query->whereBetween('card_login.updated_at', [$params['start_date']." 00:00:00.000000",$params['start_date']." 23:59:59.000000"]);
             }
         }
 
@@ -56,18 +56,21 @@ class CardLoginRepository extends BaseRepository
         }
 
         if(array_key_exists('name', $params) || array_key_exists('user_id', $params)){
-            $query = $query->join('card as acard', 'card_login.key', '=', 'acard.key')->join('users', 'users.id', '=', 'acard.user_id');
+            $query = $query
+            ->leftJoin('card as acard', 'card_login.key', '=', 'acard.key')
+            ->leftJoin('users', 'users.id', '=', 'acard.user_id');
                             
-            if(array_key_exists('name', $params)  && $params['name']){
+            if(array_key_exists('name', $params)  && !empty($params['name'])){
                 $query = $query->where('users.name', '=', $params['name']);
             }
-            if(array_key_exists('user_id', $params)  && $params['user_id']){
+
+            if(array_key_exists('user_id', $params)  && !empty($params['user_id'])){
                 $query = $query->where('users.id', '=', $params['user_id']);
             }
         }
 
 
-        $query = $query->select("*", 'card_login.created_at as log', "card_login.id as id")->orderBy('card_login.id', 'DESC');
+        $query = $query->select("*", 'card_login.updated_at as log', "card_login.id as id", 'card_login.key as key', 'card_login.created_at as created_at', 'card_login.updated_at as updated_at', 'card_login.branch_id as branch_id')->orderBy('card_login.id', 'DESC');
 
         $page_params = [
             'page' => array_key_exists('page', $params) ?  $params['page'] -1 : 0,

@@ -15,13 +15,13 @@
             <v-card>
                 <v-card-text>
                 <v-btn style=" position: fixed; top: 25px;" large m15 @click="closeDialog('dayoff_edit', item)" outlined rounded color="grey" dark>{{ translate('common.back')}}</v-btn>
-                 <DayOffEdit :id="dialogs.showEditForm.item !== null ? dialogs.showEditForm.item.id : null"/>
+                 <DayOffEdit :key="dialogs.showEditForm.key" :id="dialogs.showEditForm.item !== null ? dialogs.showEditForm.item.id : null"/>
                 </v-card-text>
             </v-card>
         </v-dialog>
 
         <!-- dialog for show permissions -->
-        <v-dialog v-model="dialogs.showCardLogAddForm" absolute  max-width="660px">
+        <v-dialog v-model="dialogs.showCreateCardLogForm.show" absolute  max-width="660px">
             <v-card>
                 <v-card-text>
                     <CardLoginAdd />
@@ -451,6 +451,7 @@
                         self.$eventBus.$emit('DAYOFF_UPDATED');
                         setTimeout(()=>{
                             self.dialogs.showEditForm.show = true;
+                            self.dialogs.showLogEditForm.key=Math.random();
                         },500);
                         break;
                     case 'create_cardlog':

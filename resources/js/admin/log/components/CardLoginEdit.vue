@@ -138,6 +138,14 @@
                 }
             }
         },
+        computed:{
+            dateCT: function () {
+                return this.date;
+            }, 
+            timeCT: function () {
+                return this.time;
+            }, 
+        },
         mounted() {
             console.log('components.cardLoginEdit.vue');
 
@@ -168,8 +176,10 @@
                 let payload = {
                     key: self.key,
                     updated_at: self.date + " " +  self.time,
+                    created_at: self.date + " " +  self.time,
                     branch_id: self.branch,
                 };
+                console.log(payload);
 
                 self.$store.commit('showLoader');
 
@@ -236,6 +246,7 @@
                     self.key = cardLog.key;
                     self.branch = cardLog.branch_id;
                     self.id = cardLog.id;
+                    console.log(cardLog);
                     
                     let safeDatetime = this.convertDateToString(cardLog.updated_at);
 

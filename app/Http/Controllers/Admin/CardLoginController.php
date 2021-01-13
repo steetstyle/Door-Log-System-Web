@@ -88,9 +88,10 @@ class CardLoginController extends AdminController
             'branch_id' => 'required',
         ]);
 
+
         if($validate->fails()) return $this->sendResponseBadRequest($validate->errors()->first());
 
-        $payload = $request->only('key', 'updated_at', 'branch_id');
+        $payload = $request->only('key',  'updated_at', 'branch_id');
 
         $updated = $this->cardLoginRepository->update($id,$payload);
 
