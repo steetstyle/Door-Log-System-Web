@@ -88,7 +88,7 @@
         'show_day_off_list' => 'İzin Günlerini Listele',
         'tag' => 'Tag',
         'tag_is_required' => 'Tag Gerekli',
-        'logs' => 'Log Kayıtları',
+        'logs' => 'Giriş-Çıkış Kayıtları',
         'cards' => 'Tanımlı Kartlar',
         'info' => 'Bilgi',
         'infos' => 'Hızlı Bilgiler',
