@@ -2735,12 +2735,23 @@ window.Vue = __webpack_require__(3);
 // If you want to add to window object
 window.tranlate = __webpack_require__(152).default.translate;
 window.convertDateToString = function (date) {
-    return new Date(date).toISOString().slice(0, 19).replace("T", " ");
+    return __WEBPACK_IMPORTED_MODULE_10_moment___default()(date.split(".000000")[0]).format("DD/MM/YYYY hh:mm:ss");
+    /* return new Date(date)
+                    .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+                    .toISOString()
+                    .slice(0, 19)
+                    .replace("T", " "); */
 };
 // If you want to use it in your vue components
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.prototype.translate = __webpack_require__(152).default.translate;
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.prototype.convertDateToString = window.convertDateToString = function (date) {
-    return new Date(date).toISOString().slice(0, 19).replace("T", " ");
+    return __WEBPACK_IMPORTED_MODULE_10_moment___default()(date.split(".000000")[0]).format("DD/MM/YYYY hh:mm:ss");
+
+    /*   return new Date(date)
+              .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+              .toISOString()
+              .slice(0, 19)
+              .replace("T", " "); */
 };
 // 3rd party
 
@@ -16456,7 +16467,7 @@ if (typeof jQuery === 'undefined') {
 /* 187 */
 /***/ (function(module, exports) {
 
-module.exports = {"en":{"auth":{"failed":"These credentials do not match our records.","throttle":"Too many login attempts. Please try again in :seconds seconds."},"branch":{"new_branch":"Yeni Şube","detail":"Şube Detayı","name":"Şube İsmi","edit_branch":"Şubeyi Düzenle"},"card":{"new_card":"Kart Ekle","edit_card":"Kart Düzenle","title":"Başlık","edit_log":"Kayıtı Düzenle","add_log":"Kayıt Ekle"},"common":{"select_branches":"Şube seçiniz","select_user":"Kullanıcı Şeçiniz","create":"Oluştur","key_is_required":"Key Gerekli","update":"Güncelle","filter_by_key":"Key'e göre filtrele","filters":"Filtreler","filter_by_name":"İsme göre filterele","clear_filter":"Filtreyi Temizle","action":"İşlemler","id":"ID","key":"Key","place":"Lokasyon","name":"İsim","email":"Email","permissions":"İzinler","groups":"Gruplar","last_login":"Son Giriş","active":"Aktiflik","card_user_name":"Kart Kullanıcısı","created_at":"Oluşturulma Tarihi","updated_at":"Güncellenme Tarihi","card_logins":"Kart Girişleri","are_you_sure_for_delete_this_card":" Kartı silmek istediğinize eminmisiniz ?","filter_by_branch":"Şubeye göre filterele","last_card_logins":"Son Kart Girişleri","from_now":"Şimdiden itibaren","last_added_cards":"Son Eklenen Kartlar","dashboard":"Anasayfa","save":"Kaydet","name_is_required":"İsim Gerekli","branches":"Şubeler","select_users":"Kullanıcı Şeçiniz","special_user_assigned":"Kullanıcı atanmamış","_are_you_sure_for_delete_this_branch":"Şubeyi silmek istediğinize eminmisiniz ?","edit":"Düzenle","add_user":"Kullanıcı Ekle","branches_list":"Şubeler","users":"Kullanıcılar","card_list":"Kartlar","filter_by_email":"Email'e göre filtrele","filter_by_groups":"Gruba göre filtrele","show":"Göster","user_permissions":"Kullanıcı Yetkileri","manage_groups":"Grupları Yönet","manage_permissions":"İzinleri Yönet","no_permission":"Tanımlı İzin Yok","special_permissions":"Özel izinler","special_permissions_detail":"are permission exclusive to this user. Permissions defined here\n            are more superior than any permission that is in his group. So if the User belongs to a group that has permission to \"create something\"\n            but then is denied to \"create something\" here, the user will be denied on that permission. In short, special permissions\n            has high priority that group permissions.","first_name":"İsim","password":"Şifre","confirm_password":"Şifreyi Doğrula","pre_activate_account":"Önceden Aktif edilmiş","select_permission":"İzin şeçiniz","permission_value":"İzinler","no_special_permissions_assigned":"Hiç özel izin atanamaış","email_is_required":"Email Gerekli","password_is_required":"Şifre Gerekli","password_do_not_match":"Girilen şifreler uyuşmuyor","allow":"İzin  ver","deny":"Reddet","inherit":"Miras Al","email_must_be_valid":"Geçerli bir email giriniz.","add_permission":"İzin Ekle","pasword_leave_blank_if_unchange":"Şifre (Değişmesini istemiyorsanız boş bırakınız)","select_day_off_type":"İzin Günü tipini şeçiniz","date_range":"Tarih Aralığı","description_is_required":"Açıklama gerekli","day_off_type_is_required":"İzin günü tipi şeçmelisiniz","select_at_least_one_date":"En az bir tarih şeçmelisiniz","description":"Açıklama","dayoffs":"İzin Günleri","back":"Geri","add_day_off":"İzin Günü Ekle","show_as_list":"Liste olarak göster","show_day_off_list":"İzin Günlerini Listele","tag":"Tag","tag_is_required":"Tag Gerekli","logs":"Giriş-Çıkış Kayıtları","cards":"Tanımlı Kartlar","info":"Bilgi","infos":"Hızlı Bilgiler","last_added_infos":"Son Eklenenler","dayoff":"Kullanıcı Yoklama","users_count":"Kullanıcı Sayısı","branches_count":"Şube Sayısı","cards_count":"Kart Sayısı","login_date":"Giriş Tarihi","create_day_log":"Kayıt Ekle","delete":"Sil"},"dayoff":{"create_day_off":"İzin Günü Ekle","detail":"İzin Günü Detayı"},"pagination":{"previous":"&laquo; Previous","next":"Next &raquo;"},"passwords":{"password":"Passwords must be at least six characters and match the confirmation.","reset":"Your password has been reset!","sent":"We have e-mailed your password reset link!","token":"This password reset token is invalid.","user":"We can't find a user with that e-mail address."},"users":{"create_user":"Kullanıcı Ekle","edit_user":"Kullanıcı Düzenle"},"validation":{"accepted":"The :attribute must be accepted.","active_url":"The :attribute is not a valid URL.","after":"The :attribute must be a date after :date.","after_or_equal":"The :attribute must be a date after or equal to :date.","alpha":"The :attribute may only contain letters.","alpha_dash":"The :attribute may only contain letters, numbers, and dashes.","alpha_num":"The :attribute may only contain letters and numbers.","array":"The :attribute must be an array.","before":"The :attribute must be a date before :date.","before_or_equal":"The :attribute must be a date before or equal to :date.","between":{"numeric":"The :attribute must be between :min and :max.","file":"The :attribute must be between :min and :max kilobytes.","string":"The :attribute must be between :min and :max characters.","array":"The :attribute must have between :min and :max items."},"boolean":"The :attribute field must be true or false.","confirmed":"The :attribute confirmation does not match.","date":"The :attribute is not a valid date.","date_format":"The :attribute does not match the format :format.","different":"The :attribute and :other must be different.","digits":"The :attribute must be :digits digits.","digits_between":"The :attribute must be between :min and :max digits.","dimensions":"The :attribute has invalid image dimensions.","distinct":"The :attribute field has a duplicate value.","email":"The :attribute must be a valid email address.","exists":"The selected :attribute is invalid.","file":"The :attribute must be a file.","filled":"The :attribute field must have a value.","image":"The :attribute must be an image.","in":"The selected :attribute is invalid.","in_array":"The :attribute field does not exist in :other.","integer":"The :attribute must be an integer.","ip":"The :attribute must be a valid IP address.","ipv4":"The :attribute must be a valid IPv4 address.","ipv6":"The :attribute must be a valid IPv6 address.","json":"The :attribute must be a valid JSON string.","max":{"numeric":"The :attribute may not be greater than :max.","file":"The :attribute may not be greater than :max kilobytes.","string":"The :attribute may not be greater than :max characters.","array":"The :attribute may not have more than :max items."},"mimes":"The :attribute must be a file of type: :values.","mimetypes":"The :attribute must be a file of type: :values.","min":{"numeric":"The :attribute must be at least :min.","file":"The :attribute must be at least :min kilobytes.","string":"The :attribute must be at least :min characters.","array":"The :attribute must have at least :min items."},"not_in":"The selected :attribute is invalid.","numeric":"The :attribute must be a number.","present":"The :attribute field must be present.","regex":"The :attribute format is invalid.","required":"The :attribute field is required.","required_if":"The :attribute field is required when :other is :value.","required_unless":"The :attribute field is required unless :other is in :values.","required_with":"The :attribute field is required when :values is present.","required_with_all":"The :attribute field is required when :values is present.","required_without":"The :attribute field is required when :values is not present.","required_without_all":"The :attribute field is required when none of :values are present.","same":"The :attribute and :other must match.","size":{"numeric":"The :attribute must be :size.","file":"The :attribute must be :size kilobytes.","string":"The :attribute must be :size characters.","array":"The :attribute must contain :size items."},"string":"The :attribute must be a string.","timezone":"The :attribute must be a valid zone.","unique":"The :attribute has already been taken.","uploaded":"The :attribute failed to upload.","url":"The :attribute format is invalid.","custom":{"attribute-name":{"rule-name":"custom-message"}},"attributes":[]}}}
+module.exports = {"en":{"auth":{"failed":"These credentials do not match our records.","throttle":"Too many login attempts. Please try again in :seconds seconds."},"branch":{"new_branch":"Yeni Şube","detail":"Şube Detayı","name":"Şube İsmi","edit_branch":"Şubeyi Düzenle"},"card":{"new_card":"Kart Ekle","edit_card":"Kart Düzenle","title":"Başlık","edit_log":"Kayıtı Düzenle","add_log":"Kayıt Ekle"},"common":{"select_branches":"Şube seçiniz","select_user":"Kullanıcı Şeçiniz","create":"Oluştur","key_is_required":"Key Gerekli","update":"Güncelle","filter_by_key":"Key'e göre filtrele","filters":"Filtreler","filter_by_name":"İsme göre filterele","clear_filter":"Filtreyi Temizle","action":"İşlemler","id":"ID","key":"Key","place":"Lokasyon","name":"İsim","email":"Email","permissions":"İzinler","groups":"Gruplar","last_login":"Son Giriş","active":"Aktiflik","card_user_name":"Kart Kullanıcısı","created_at":"Oluşturulma Tarihi","updated_at":"Güncellenme Tarihi","card_logins":"Kart Girişleri","are_you_sure_for_delete_this_card":" Kartı silmek istediğinize eminmisiniz ?","filter_by_branch":"Şubeye göre filterele","last_card_logins":"Son Kart Girişleri","from_now":"Şimdiden itibaren","last_added_cards":"Son Eklenen Kartlar","dashboard":"Anasayfa","save":"Kaydet","name_is_required":"İsim Gerekli","branches":"Şubeler","select_users":"Kullanıcı Şeçiniz","special_user_assigned":"Kullanıcı atanmamış","_are_you_sure_for_delete_this_branch":"Şubeyi silmek istediğinize eminmisiniz ?","edit":"Düzenle","add_user":"Kullanıcı Ekle","branches_list":"Şubeler","users":"Kullanıcılar","card_list":"Kartlar","filter_by_email":"Email'e göre filtrele","filter_by_groups":"Gruba göre filtrele","show":"Göster","user_permissions":"Kullanıcı Yetkileri","manage_groups":"Grupları Yönet","manage_permissions":"İzinleri Yönet","no_permission":"Tanımlı İzin Yok","special_permissions":"Özel izinler","special_permissions_detail":"are permission exclusive to this user. Permissions defined here\n            are more superior than any permission that is in his group. So if the User belongs to a group that has permission to \"create something\"\n            but then is denied to \"create something\" here, the user will be denied on that permission. In short, special permissions\n            has high priority that group permissions.","first_name":"İsim","password":"Şifre","confirm_password":"Şifreyi Doğrula","pre_activate_account":"Önceden Aktif edilmiş","select_permission":"İzin şeçiniz","permission_value":"İzinler","no_special_permissions_assigned":"Hiç özel izin atanamaış","email_is_required":"Email Gerekli","password_is_required":"Şifre Gerekli","password_do_not_match":"Girilen şifreler uyuşmuyor","allow":"İzin  ver","deny":"Reddet","inherit":"Miras Al","email_must_be_valid":"Geçerli bir email giriniz.","add_permission":"İzin Ekle","pasword_leave_blank_if_unchange":"Şifre (Değişmesini istemiyorsanız boş bırakınız)","select_day_off_type":"İzin Günü tipini şeçiniz","date_range":"Tarih Aralığı","description_is_required":"Açıklama gerekli","day_off_type_is_required":"İzin günü tipi şeçmelisiniz","select_at_least_one_date":"En az bir tarih şeçmelisiniz","description":"Açıklama","dayoffs":"İzin Günleri","back":"Geri","add_day_off":"İzin Günü Ekle","show_as_list":"Liste olarak göster","show_day_off_list":"İzin Günlerini Listele","tag":"Tag","tag_is_required":"Tag Gerekli","logs":"Giriş-Çıkış Kayıtları","cards":"Tanımlı Kartlar","info":"Bilgi","infos":"Hızlı Bilgiler","last_added_infos":"Son Eklenenler","dayoff":"Kullanıcı Yoklama","users_count":"Kullanıcı Sayısı","branches_count":"Şube Sayısı","cards_count":"Kart Sayısı","login_date":"Giriş Tarihi","create_day_log":"Kayıt Ekle","delete":"Sil","select_cards":"Kart Şeçiniz"},"dayoff":{"create_day_off":"İzin Günü Ekle","detail":"İzin Günü Detayı"},"pagination":{"previous":"&laquo; Previous","next":"Next &raquo;"},"passwords":{"password":"Passwords must be at least six characters and match the confirmation.","reset":"Your password has been reset!","sent":"We have e-mailed your password reset link!","token":"This password reset token is invalid.","user":"We can't find a user with that e-mail address."},"users":{"create_user":"Kullanıcı Ekle","edit_user":"Kullanıcı Düzenle"},"validation":{"accepted":"The :attribute must be accepted.","active_url":"The :attribute is not a valid URL.","after":"The :attribute must be a date after :date.","after_or_equal":"The :attribute must be a date after or equal to :date.","alpha":"The :attribute may only contain letters.","alpha_dash":"The :attribute may only contain letters, numbers, and dashes.","alpha_num":"The :attribute may only contain letters and numbers.","array":"The :attribute must be an array.","before":"The :attribute must be a date before :date.","before_or_equal":"The :attribute must be a date before or equal to :date.","between":{"numeric":"The :attribute must be between :min and :max.","file":"The :attribute must be between :min and :max kilobytes.","string":"The :attribute must be between :min and :max characters.","array":"The :attribute must have between :min and :max items."},"boolean":"The :attribute field must be true or false.","confirmed":"The :attribute confirmation does not match.","date":"The :attribute is not a valid date.","date_format":"The :attribute does not match the format :format.","different":"The :attribute and :other must be different.","digits":"The :attribute must be :digits digits.","digits_between":"The :attribute must be between :min and :max digits.","dimensions":"The :attribute has invalid image dimensions.","distinct":"The :attribute field has a duplicate value.","email":"The :attribute must be a valid email address.","exists":"The selected :attribute is invalid.","file":"The :attribute must be a file.","filled":"The :attribute field must have a value.","image":"The :attribute must be an image.","in":"The selected :attribute is invalid.","in_array":"The :attribute field does not exist in :other.","integer":"The :attribute must be an integer.","ip":"The :attribute must be a valid IP address.","ipv4":"The :attribute must be a valid IPv4 address.","ipv6":"The :attribute must be a valid IPv6 address.","json":"The :attribute must be a valid JSON string.","max":{"numeric":"The :attribute may not be greater than :max.","file":"The :attribute may not be greater than :max kilobytes.","string":"The :attribute may not be greater than :max characters.","array":"The :attribute may not have more than :max items."},"mimes":"The :attribute must be a file of type: :values.","mimetypes":"The :attribute must be a file of type: :values.","min":{"numeric":"The :attribute must be at least :min.","file":"The :attribute must be at least :min kilobytes.","string":"The :attribute must be at least :min characters.","array":"The :attribute must have at least :min items."},"not_in":"The selected :attribute is invalid.","numeric":"The :attribute must be a number.","present":"The :attribute field must be present.","regex":"The :attribute format is invalid.","required":"The :attribute field is required.","required_if":"The :attribute field is required when :other is :value.","required_unless":"The :attribute field is required unless :other is in :values.","required_with":"The :attribute field is required when :values is present.","required_with_all":"The :attribute field is required when :values is present.","required_without":"The :attribute field is required when :values is not present.","required_without_all":"The :attribute field is required when none of :values are present.","same":"The :attribute and :other must match.","size":{"numeric":"The :attribute must be :size.","file":"The :attribute must be :size kilobytes.","string":"The :attribute must be :size characters.","array":"The :attribute must contain :size items."},"string":"The :attribute must be a string.","timezone":"The :attribute must be a valid zone.","unique":"The :attribute has already been taken.","uploaded":"The :attribute failed to upload.","url":"The :attribute format is invalid.","custom":{"attribute-name":{"rule-name":"custom-message"}},"attributes":[]}}}
 
 /***/ }),
 /* 188 */
@@ -61024,7 +61035,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return !!v || _this.translate('common.description_is_required');
             }],
             options: {
-                dayofftypes: ['Normal', 'Offical']
+                dayofftypes: ['Normal', 'Resmi', 'Günlük', 'Hatfalık', 'Yıllık', 'Saatlik']
             },
             selectedDayOffType: '',
             selectedDayOffTypeRules: [function (v) {
@@ -61389,7 +61400,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return !!v || _this.translate('common.description_is_required');
             }],
             options: {
-                dayofftypes: ['Normal', 'Offical']
+                dayofftypes: ['Normal', 'Resmi', 'Günlük', 'Hatfalık', 'Yıllık', 'Saatlik']
             },
             selectedDayOffType: '',
             selectedDayOffTypeRules: [function (v) {
@@ -61776,10 +61787,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         propId: {
+            required: false
+        },
+        propUserId: {
             required: false
         }
     },
@@ -61798,6 +61818,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _defineProperty(_ref, 'id', ''), _defineProperty(_ref, 'keyRules', [function (v) {
             return !!v || _this.translate('common.key_is_required');
         }]), _defineProperty(_ref, 'date', ''), _defineProperty(_ref, 'time', ''), _defineProperty(_ref, 'branch', ''), _defineProperty(_ref, 'selectedBranch', null), _defineProperty(_ref, 'branches', []), _defineProperty(_ref, 'active', ''), _defineProperty(_ref, 'options', {
+            cards: [],
             users: [],
             branches: []
         }), _defineProperty(_ref, 'alert', {
@@ -61805,10 +61826,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             icon: '',
             color: '',
             message: ''
-        }), _defineProperty(_ref, 'branches_totalItems', 0), _defineProperty(_ref, 'pagination', {
+        }), _defineProperty(_ref, 'branches_totalItems', 0), _defineProperty(_ref, 'cards_totalItems', 0), _defineProperty(_ref, 'pagination', {
             branches_page: 0,
             branches_itemsPerPage: 0,
-            branches_totalItems: 0
+            branches_totalItems: 0,
+
+            cards_page: 0,
+            cards_itemsPerPage: 0,
+            cards_totalItems: 0
         }), _ref;
     },
     mounted: function mounted() {
@@ -61817,8 +61842,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var self = this;
 
         this.id = this.$attrs.id != undefined ? this.$attrs.id : this.propId;
+        this.user_id = this.$attrs.user_id != undefined ? this.$attrs.user_id : this.propUserId;
 
         this.loadBranches(function () {});
+
+        this.loadUserCards(function () {});
 
         this.$store.commit('setBreadcrumbs', [{ label: this.translate('card.title'), to: { name: 'cards.list' } }, { label: this.translate('card.add_log'), to: '' }]);
     },
@@ -61876,6 +61904,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 self.options.branches = response.data.data.data;
                 self.branches_totalItems = response.data.data.total;
                 self.pagination.branches_totalItems = response.data.data.total;
+                if (self.options.branches.length > 0) self.branch = self.options.branches[0];
+                (cb || Function)();
+            });
+        },
+        loadUserCards: function loadUserCards(cb) {
+
+            var self = this;
+            var params = {
+                user_id: self.user_id,
+                branch_id: '',
+                key: ''
+            };
+
+            axios.get('/admin/cards', { params: params }).then(function (response) {
+                self.options.cards = response.data.data;
+                if (self.options.cards.length > 0) self.key = self.options.cards[0];
                 (cb || Function)();
             });
         }
@@ -61933,10 +61977,12 @@ var render = function() {
                         "v-flex",
                         { attrs: { xs12: "", sm12: "" } },
                         [
-                          _c("v-text-field", {
+                          _c("v-select", {
                             attrs: {
-                              label: _vm.translate("common.key"),
-                              rules: _vm.keyRules
+                              label: _vm.translate("common.select_cards"),
+                              items: _vm.options.cards,
+                              "item-text": "key",
+                              "item-value": "id"
                             },
                             model: {
                               value: _vm.key,
@@ -62842,11 +62888,14 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]({
             name: "log.list",
             component: __webpack_require__(227)
         }, {
-            path: "/edit/:id",
+            path: "/edit/:id/:user_id",
             name: "log.edit",
             component: __webpack_require__(157),
             props: function props(route) {
-                return { propId: route.params.id };
+                return {
+                    propId: route.params.id,
+                    propUserId: route.params.user_id
+                };
             }
         }, {
             path: "/create",
@@ -64310,14 +64359,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -64672,11 +64713,7 @@ var render = function() {
                               _vm._v(
                                 " @" +
                                   _vm._s(
-                                    _vm
-                                      .moment(
-                                        log.created_at.split(".000000")[0]
-                                      )
-                                      .format("DD/MM/YYYY hh:mm:ss")
+                                    _vm.convertDateToString(log.updated_at)
                                   ) +
                                   "\n\t\t\t\t\t\t\t\t\t"
                               )
@@ -64769,11 +64806,7 @@ var render = function() {
                               _vm._v(
                                 " @" +
                                   _vm._s(
-                                    _vm
-                                      .moment(
-                                        card.created_at.split(".000000")[0]
-                                      )
-                                      .format("DD/MM/YYYY hh:mm:ss")
+                                    _vm.convertDateToString(card.created_at)
                                   ) +
                                   "\n\t\t\t\t\t\t\t\t\t"
                               )
@@ -66098,7 +66131,21 @@ var render = function() {
             expression: "dialogs.showCreateCardLogForm.show"
           }
         },
-        [_c("v-card", [_c("v-card-text", [_c("CardLoginAdd")], 1)], 1)],
+        [
+          _c(
+            "v-card",
+            [
+              _c(
+                "v-card-text",
+                [
+                  _c("CardLoginAdd", { attrs: { user_id: _vm.filters.userId } })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
         1
       ),
       _vm._v(" "),

@@ -24,7 +24,7 @@
         <v-dialog v-model="dialogs.showCreateCardLogForm.show" absolute  max-width="660px">
             <v-card>
                 <v-card-text>
-                    <CardLoginAdd />
+                    <CardLoginAdd :user_id="filters.userId"  />
                 </v-card-text>
             </v-card>
         </v-dialog>

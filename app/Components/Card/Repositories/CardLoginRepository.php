@@ -13,6 +13,7 @@ use App\Components\User\Models\User;
 
 use App\Components\Core\BaseRepository;
 use App\Components\Card\Models\CardLogin;
+use App\Components\Card\Models\Card;
 use App\Components\Setting\Models\Setting;
 use App\Components\Branch\Models\Branch;
 use App\Components\Core\Utilities\Helpers;
@@ -92,9 +93,18 @@ class CardLoginRepository extends BaseRepository
         if(!$branch) return false;
 
         $payload = [];
+
         $setting = Setting::all()->first();
+
         if($setting == null){
             $setting = Setting::create();
+        }
+
+        $card = Card::where('branch_id', '=',  $branch->id)
+                        ->where('key', '=', $params['key'])->first();
+
+        if($card != null) {
+            $payload['user_id'] = $card->user_id;
         }
 
         $payload['branch_id'] = $branch->id;

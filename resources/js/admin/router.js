@@ -29,10 +29,13 @@ const router = new Router({
                     component: require("./log/components/CardLoginList"),
                 },
                 {
-                    path: "/edit/:id",
+                    path: "/edit/:id/:user_id",
                     name: "log.edit",
                     component: require("./log/components/CardLoginEdit"),
-                    props: (route) => ({ propId: route.params.id }),
+                    props: (route) => ({
+                        propId: route.params.id,
+                        propUserId: route.params.user_id,
+                    }),
                 },
                 {
                     path: "/create",

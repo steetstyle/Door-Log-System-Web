@@ -99,5 +99,6 @@
         'cards_count' => 'Kart Sayısı',
         'login_date' => 'Giriş Tarihi',
         'create_day_log' => 'Kayıt Ekle',
-        'delete' => 'Sil'
+        'delete' => 'Sil',
+        'select_cards' => 'Kart Şeçiniz'
     ];

@@ -34,8 +34,14 @@ class CardRepository extends BaseRepository
         
         $query = Card::where('card.key', '!=' , null)->orderBy('card.id', 'DESC');
         if($params != null ){
-            if($params['key']){
+            if(array_key_exists('key',$params) && !empty($params['key'])){
                 $query = $query->where('key','=', $params['key']);
+            }
+            if(array_key_exists('user_id',$params) && !empty($params['user_id'])){
+                $query = $query->where('user_id','=', $params['user_id']);
+            }
+            if(array_key_exists('branch_id',$params) && !empty($params['branch_id'])){
+                $query = $query->where('branch_id','=', $params['branch_id']);
             }
         }
         return $query->get();

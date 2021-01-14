@@ -57,7 +57,11 @@
                 options:{
                     dayofftypes:[
                         'Normal',
-                        'Offical'
+                        'Resmi',
+                        'Günlük',
+                        'Hatfalık',
+                        'Yıllık',
+                        'Saatlik'
                     ]
                 },
                 selectedDayOffType:'',

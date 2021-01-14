@@ -109,11 +109,7 @@
 							<v-timeline-item v-for="log in logs" :key="log.created_at" small>
 								<div>
 									<div class="font-weight-normal">
-										<strong>{{ log.key }}</strong> @{{
-											moment(log.created_at.split(".000000")[0]).format(
-												"DD/MM/YYYY hh:mm:ss"
-											)
-										}}
+										<strong>{{ log.key }}</strong> @{{ convertDateToString( log.updated_at) }}
 									</div>
 									<div>{{  log.user != null ? log.user.name : '' }}</div>@{{ log.branch != null ? log.branch.name : '' }}
 								</div>
@@ -148,11 +144,7 @@
 							<v-timeline-item v-for="card in cards" :key="card.created_at" small>
 								<div>
 									<div class="font-weight-normal">
-										<strong>{{ card.branch.name }}</strong> @{{
-											moment(card.created_at.split(".000000")[0]).format(
-												"DD/MM/YYYY hh:mm:ss"
-											)
-										}}
+										<strong>{{ card.branch.name }}</strong> @{{ convertDateToString( card.created_at) }}
 									</div>
 									<div>{{ card.user.name }}</div>
 								</div>

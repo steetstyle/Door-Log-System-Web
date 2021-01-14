@@ -11,20 +11,25 @@ window.Vue = require("vue");
 // If you want to add to window object
 window.tranlate = require("../VueTranslation/Translation").default.translate;
 window.convertDateToString = function(date) {
-    return new Date(date)
-        .toISOString()
-        .slice(0, 19)
-        .replace("T", " ");
+    return moment(date.split(".000000")[0]).format("DD/MM/YYYY hh:mm:ss");
+    /* return new Date(date)
+                    .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+                    .toISOString()
+                    .slice(0, 19)
+                    .replace("T", " "); */
 };
 // If you want to use it in your vue components
 Vue.prototype.translate = require("../VueTranslation/Translation").default.translate;
 Vue.prototype.convertDateToString = window.convertDateToString = function(
     date
 ) {
-    return new Date(date)
-        .toISOString()
-        .slice(0, 19)
-        .replace("T", " ");
+    return moment(date.split(".000000")[0]).format("DD/MM/YYYY hh:mm:ss");
+
+    /*   return new Date(date)
+              .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+              .toISOString()
+              .slice(0, 19)
+              .replace("T", " "); */
 };
 // 3rd party
 import "@mdi/font/css/materialdesignicons.css";

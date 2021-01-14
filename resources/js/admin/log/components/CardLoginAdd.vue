@@ -9,7 +9,13 @@
                 <v-container grid-list-md>
                 <v-layout row wrap>
                     <v-flex xs12 sm12>
-                        <v-text-field v-bind:label="translate('common.key')" v-model="key" :rules="keyRules"></v-text-field>
+                        <v-select
+                                v-bind:label="translate('common.select_cards')"
+                                v-bind:items="options.cards"
+                                v-model="key"
+                                item-text="key"
+                                item-value="id"
+                        ></v-select>
                     </v-flex>
                     <v-flex xs12 sm8>
                         <v-select
@@ -96,6 +102,9 @@
         props: {
             propId: {
                 required: false
+            },
+            propUserId: {
+                required: false
             }
         },
         data() {
@@ -119,6 +128,7 @@
                 branches: [],
                 active:'',
                 options: {
+                    cards: [],
                     users: [],
                     branches: [],
                 },
@@ -129,10 +139,15 @@
                     message: ''
                 },
                 branches_totalItems:0,
+                cards_totalItems:0,
                 pagination:{
                     branches_page:0,
                     branches_itemsPerPage:0,
                     branches_totalItems:0,
+
+                    cards_page:0,
+                    cards_itemsPerPage:0,
+                    cards_totalItems:0,
                 }
             }
         },
@@ -142,8 +157,13 @@
             const self = this;
 
             this.id = this.$attrs.id != undefined ? this.$attrs.id : this.propId;
+            this.user_id = this.$attrs.user_id != undefined ? this.$attrs.user_id : this.propUserId;
 
             this.loadBranches(()=>{
+
+            });
+
+            this.loadUserCards(()=>{
 
             });
 
@@ -206,9 +226,25 @@
                     self.options.branches  = response.data.data.data;
                     self.branches_totalItems = response.data.data.total;
                     self.pagination.branches_totalItems = response.data.data.total;
+                   if(self.options.branches.length > 0)  self.branch = self.options.branches[0];
                     (cb || Function)();
                 });
             },
+            loadUserCards(cb){
+
+                const self = this;
+                let params = {
+                    user_id: self.user_id,
+                    branch_id: '',
+                    key: ''
+                };
+
+                axios.get('/admin/cards',{params: params}).then(function(response) {
+                    self.options.cards  = response.data.data;
+                    if(self.options.cards.length > 0)  self.key = self.options.cards[0];
+                    (cb || Function)();
+                });
+            }
         }
     }
 </script>

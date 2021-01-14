@@ -36,12 +36,12 @@
                 class="elevation-1">
             <template v-slot:header="{props:{headers}}">
                 <thead>
-                <tr>
-                    <th v-for="header in headers">
-                        <div v-if="header.value=='name'" :class="`text-${header.align}`"><v-icon>mdi-person</v-icon> {{header.text}}</div>
-                       <div v-else :class="`text-${header.align}`">{{header.text}}</div>
-                    </th>
-                </tr>
+                    <tr>
+                        <th v-for="header in headers">
+                            <div v-if="header.value=='name'" :class="`text-${header.align}`"><v-icon>mdi-person</v-icon> {{header.text}}</div>
+                        <div v-else :class="`text-${header.align}`">{{header.text}}</div>
+                        </th>
+                    </tr>
                 </thead>
             </template>
             <template v-slot:body="{items}">
@@ -58,7 +58,7 @@
                         <td>{{ item.key }}</td>
                         <td>{{ item.branch != null ? item.branch.tag : '' }}</td>
                         <td>{{ item.user != null  ? item.user.name: '' }}</td>
-                        <td>{{ convertDateToString(item.created_at)}}</td>
+                        <td>{{ convertDateToString(item.created_at) }}</td>
                         <td>{{ convertDateToString(item.updated_at )}}</td>
                     </tr>
                 </tbody>
