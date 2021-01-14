@@ -113,7 +113,7 @@ class CardLoginRepository extends BaseRepository
                     $payload['user_id'] = $card->user_id;
                 }
         */
-        
+         
         $payload['branch_id'] = $branch->id;
         $payload['key'] = $params['key'];
         $payload['login_time'] = $setting->login_time;

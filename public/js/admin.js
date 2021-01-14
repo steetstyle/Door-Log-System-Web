@@ -2735,24 +2735,18 @@ window.Vue = __webpack_require__(3);
 // If you want to add to window object
 window.tranlate = __webpack_require__(152).default.translate;
 window.convertDateToString = function (date) {
-    return __WEBPACK_IMPORTED_MODULE_10_moment___default()(date.split(".000000")[0]).add(3, "hours").format("DD/MM/YYYY hh:mm:ss");
+    return date != null ? __WEBPACK_IMPORTED_MODULE_10_moment___default()(date.split(".000000")[0]).add(3, "hours").format("DD/MM/YYYY HH:mm:ss") : "";
 
     /* return new Date(date)
-                                                                                                                .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
-                                                                                                                .toISOString()
-                                                                                                                .slice(0, 19)
-                                                                                                                .replace("T", " "); */
+                                                                                                                                    .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+                                                                                                                                    .toISOString()
+                                                                                                                                    .slice(0, 19)
+                                                                                                                                    .replace("T", " "); */
 };
 // If you want to use it in your vue components
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.prototype.translate = __webpack_require__(152).default.translate;
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.prototype.convertDateToString = window.convertDateToString = function (date) {
-    return __WEBPACK_IMPORTED_MODULE_10_moment___default()(date.split(".000000")[0]).add(3, "hours").format("DD/MM/YYYY hh:mm:ss");
-
-    /*   return new Date(date)
-                                                                                                          .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
-                                                                                                          .toISOString()
-                                                                                                          .slice(0, 19)
-                                                                                                          .replace("T", " "); */
+    return date != null ? __WEBPACK_IMPORTED_MODULE_10_moment___default()(date.split(".000000")[0]).add(3, "hours").format("DD/MM/YYYY HH:mm:ss") : "";
 };
 // 3rd party
 
@@ -68236,12 +68230,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            headers: [{ text: this.translate('common.action'), value: false, align: 'left', sortable: false }, { text: this.translate('common.name'), value: 'name', align: 'left', sortable: false }, { text: this.translate('common.email'), value: 'email', align: 'left', sortable: false }, { text: this.translate('common.permissions'), value: 'permissions', align: 'left', sortable: false }, { text: this.translate('common.last_login'), value: 'last_login', align: 'left', sortable: false }, { text: this.translate('common.active'), value: 'active', align: 'center', sortable: false }],
+            headers: [{ text: this.translate('common.action'), value: false, align: 'left', sortable: false }, { text: this.translate('common.name'), value: 'name', align: 'left', sortable: false }, { text: this.translate('common.email'), value: 'email', align: 'left', sortable: false }, { text: this.translate('common.permissions'), value: 'permissions', align: 'left', sortable: false }, { text: this.translate('common.active'), value: 'active', align: 'center', sortable: false }],
             items: [],
             totalItems: 0,
             pagination: {
@@ -68781,10 +68774,6 @@ var render = function() {
                         ],
                         1
                       ),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(_vm.convertDateToString(item.last_login)))
-                      ]),
                       _vm._v(" "),
                       _c(
                         "td",
