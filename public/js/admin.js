@@ -2735,23 +2735,24 @@ window.Vue = __webpack_require__(3);
 // If you want to add to window object
 window.tranlate = __webpack_require__(152).default.translate;
 window.convertDateToString = function (date) {
-    return __WEBPACK_IMPORTED_MODULE_10_moment___default()(date.split(".000000")[0]).format("DD/MM/YYYY hh:mm:ss");
+    return __WEBPACK_IMPORTED_MODULE_10_moment___default()(date.split(".000000")[0]).add(3, "hours").format("DD/MM/YYYY hh:mm:ss");
+
     /* return new Date(date)
-                    .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
-                    .toISOString()
-                    .slice(0, 19)
-                    .replace("T", " "); */
+                                                                                                                .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+                                                                                                                .toISOString()
+                                                                                                                .slice(0, 19)
+                                                                                                                .replace("T", " "); */
 };
 // If you want to use it in your vue components
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.prototype.translate = __webpack_require__(152).default.translate;
 __WEBPACK_IMPORTED_MODULE_2_vue___default.a.prototype.convertDateToString = window.convertDateToString = function (date) {
-    return __WEBPACK_IMPORTED_MODULE_10_moment___default()(date.split(".000000")[0]).format("DD/MM/YYYY hh:mm:ss");
+    return __WEBPACK_IMPORTED_MODULE_10_moment___default()(date.split(".000000")[0]).add(3, "hours").format("DD/MM/YYYY hh:mm:ss");
 
     /*   return new Date(date)
-              .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
-              .toISOString()
-              .slice(0, 19)
-              .replace("T", " "); */
+                                                                                                          .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+                                                                                                          .toISOString()
+                                                                                                          .slice(0, 19)
+                                                                                                          .replace("T", " "); */
 };
 // 3rd party
 
@@ -65152,6 +65153,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
 
             axios.get('/admin/cardlogin', { params: params }).then(function (response) {
+                console.log(response.data.data);
                 self.items = response.data.data;
                 self.totalItems = response.data.data.total;
                 self.pagination.totalItems = response.data.data.total;

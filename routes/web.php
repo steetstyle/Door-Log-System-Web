@@ -17,6 +17,8 @@ Route::get('files/{id}/download','Front\\FileController@fileDownload')->name('fr
 Route::post('device/log/add','Admin\\CardLoginController@add_device_log')->name('device.log.add');
 Route::post('api/info','Admin\\DashboardController@getInformation')->name('dashbord.getInformation');
 
+Route::any('excel/export/cardlog','Admin\\ExcelController@exportCardLogs')->name('excel.export.cardlog');
+
 Auth::routes();
 
 // NOTE:

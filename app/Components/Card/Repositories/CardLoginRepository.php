@@ -32,7 +32,7 @@ class CardLoginRepository extends BaseRepository
      * @param array $params
      * @return CardLoginRepository[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model[]|mixed[]
      */
-    public function index($params)
+    public function index($params, $selectArray = ["*", 'card_login.updated_at as log', "card_login.id as id", 'card_login.key as key', 'card_login.created_at as created_at', 'card_login.updated_at as updated_at', 'card_login.branch_id as branch_id'])
     {
         $query = CardLogin::where('card_login.key', '!=' , null);
 
@@ -50,6 +50,8 @@ class CardLoginRepository extends BaseRepository
         if(array_key_exists('branchName', $params) && $params['branchName']){
             $query = $query->join('branches as abranch', 'card_login.branch_id', '=', 'abranch.id')
                             ->where('abranch.tag', '=', $params['branchName']);
+            $query = $query->select('abranch.tag as branch_name');
+
         }
 
         if(array_key_exists('key', $params) && $params['key']){
@@ -67,11 +69,15 @@ class CardLoginRepository extends BaseRepository
 
             if(array_key_exists('user_id', $params)  && !empty($params['user_id'])){
                 $query = $query->where('users.id', '=', $params['user_id']);
+
             }
+
+            $query = $query->select('users.id as user_id', 'users.first_name as first_name', 'users.last_name as last_name');
+
         }
 
 
-        $query = $query->select("*", 'card_login.updated_at as log', "card_login.id as id", 'card_login.key as key', 'card_login.created_at as created_at', 'card_login.updated_at as updated_at', 'card_login.branch_id as branch_id')->orderBy('card_login.id', 'DESC');
+        $query = $query->select($selectArray)->orderBy('card_login.id', 'DESC');
 
         $page_params = [
             'page' => array_key_exists('page', $params) ?  $params['page'] -1 : 0,
@@ -100,13 +106,14 @@ class CardLoginRepository extends BaseRepository
             $setting = Setting::create();
         }
 
-        $card = Card::where('branch_id', '=',  $branch->id)
-                        ->where('key', '=', $params['key'])->first();
+        /*   $card = Card::where('branch_id', '=',  $branch->id)
+                                ->where('key', '=', $params['key'])->first();
 
-        if($card != null) {
-            $payload['user_id'] = $card->user_id;
-        }
-
+                if($card != null) {
+                    $payload['user_id'] = $card->user_id;
+                }
+        */
+        
         $payload['branch_id'] = $branch->id;
         $payload['key'] = $params['key'];
         $payload['login_time'] = $setting->login_time;
