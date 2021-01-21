@@ -49,7 +49,7 @@ class CardLoginRepository extends BaseRepository
 
         if(array_key_exists('branchName', $params) && $params['branchName']){
             $query = $query->join('branches as abranch', 'card_login.branch_id', '=', 'abranch.id')
-                            ->where('abranch.tag', '=', $params['branchName']);
+                            ->where('abranch.tag', 'LIKE', '%'.$params['branchName'].'%');
             $query = $query->select('abranch.tag as branch_name');
 
         }
@@ -64,7 +64,7 @@ class CardLoginRepository extends BaseRepository
             ->leftJoin('users', 'users.id', '=', 'acard.user_id');
                             
             if(array_key_exists('name', $params)  && !empty($params['name'])){
-                $query = $query->where('users.name', '=', $params['name']);
+                $query = $query->where('users.name', 'LIKE', "%".$params['name']."%");
             }
 
             if(array_key_exists('user_id', $params)  && !empty($params['user_id'])){

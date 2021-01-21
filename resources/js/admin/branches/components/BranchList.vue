@@ -13,7 +13,7 @@
             </div>
             <div class="d-flex flex-lg-row flex-sm-column">
                 <div class="flex-grow-1 pa-2">
-                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_name')"  v-model="filters.name"></v-text-field>
+                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_tag')"  v-model="filters.tag"></v-text-field>
                 </div>
             </div>
         </v-card>
@@ -32,7 +32,7 @@
                 <thead>
                 <tr>
                     <th v-for="header in headers">
-                        <div v-if="header.value=='name'" :class="`text-${header.align}`"><v-icon>mdi-person</v-icon> {{header.text}}</div>
+                        <div v-if="header.value=='tag'" :class="`text-${header.align}`"><v-icon>mdi-person</v-icon> {{header.text}}</div>
                        <div v-else :class="`text-${header.align}`">{{header.text}}</div>
                     </th>
                 </tr>
@@ -52,7 +52,7 @@
                             </div>
                         </td>
                         <td>{{ item.id }}</td>
-                        <td>{{ item.name }}</td>
+                        <td>{{ item.tag }}</td>
                         <td>{{ convertDateToString( item.created_at) }}</td>
                         <td>{{ convertDateToString( item.updated_at) }}</td>
                     </tr>
@@ -69,7 +69,7 @@
                 headers: [
                     { text: this.translate('common.action'), value: false, align: 'left', sortable: false },
                     { text:  this.translate('common.id'), value: 'id', align: 'left', sortable: false },
-                    { text: this.translate('common.key'), value: 'name', align: 'left', sortable: false },
+                    { text: this.translate('common.tag'), value: 'name', align: 'left', sortable: false },
                     { text:  this.translate('common.created_at'), value: 'created_at', align: 'left', sortable: false },
                     { text:  this.translate('common.updated_at'), value: 'updated_at', align: 'left', sortable: false },
                 ],
@@ -123,7 +123,7 @@
                 const self = this;
 
                 let params = {
-                    name: self.filters.name,
+                    tag: self.filters.tag,
                     page: self.pagination.page,
                     per_page: self.pagination.itemsPerPage
                 };

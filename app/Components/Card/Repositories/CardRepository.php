@@ -43,6 +43,11 @@ class CardRepository extends BaseRepository
             if(array_key_exists('branch_id',$params) && !empty($params['branch_id'])){
                 $query = $query->where('branch_id','=', $params['branch_id']);
             }
+            if(array_key_exists('name',$params) && !empty($params['name'])){
+                $query = $query->join('users', 'users.id', '=', 'card.user_id')
+                ->where('users.name', 'LIKE', "%".$params['name']."%");
+             
+            }
         }
         return $query->get();
     }

@@ -32,6 +32,8 @@ class Card extends Model
 
     protected $appends = ['user', 'branch'];
 
+    protected $visible = ['user', 'branch','key', 'user_id', 'branch_id', 'login_time', 'exit_time', 'created_at', 'updated_at'];
+
     /**
      * returns the users on this branch
      *

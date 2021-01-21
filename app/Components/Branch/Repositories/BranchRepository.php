@@ -33,9 +33,9 @@ class BranchRepository extends BaseRepository
     {
         return $this->get($params,[],function($q) use ($params)
         {
-            $name = Arr::get($params,'name','');
+            $tag = Arr::get($params,'tag','');
 
-            $q->where('name','like',"%{$name}%");
+            $q->where('tag','like',"%{$tag}%");
 
             return $q;
         });

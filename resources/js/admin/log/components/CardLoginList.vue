@@ -11,7 +11,7 @@
                     <h1 style="font-size:50px;"> {{ translate('common.filters')}}</h1>
                     </center>
                     <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_name')"  v-model="filters.name"></v-text-field>
-                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_key')" v-model="filters.key"></v-text-field>
+                    <!-- <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_key')" v-model="filters.key"></v-text-field> -->
                     <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_branch')" v-model="filters.branchName"></v-text-field>
                      <v-btn block @click="clearFilters()" class="specialPrimary lighten-1" dark>
                         {{ translate('common.clear_filter')}}
@@ -58,7 +58,6 @@
                         <td>{{ item.key }}</td>
                         <td>{{ item.branch != null ? item.branch.tag : '' }}</td>
                         <td>{{ item.user != null  ? item.user.name: '' }}</td>
-                        <td>{{ convertDateToString(item.created_at) }}</td>
                         <td>{{ convertDateToString(item.updated_at )}}</td>
                     </tr>
                 </tbody>
@@ -77,8 +76,7 @@
                     { text:  this.translate('common.key'), value: 'key', align: 'left', sortable: false },
                     { text:  this.translate('common.place'), value: 'place', align: 'left', sortable: true },
                     { text:  this.translate('common.card_user_name'), value: 'first_name', align: 'left', sortable: true },
-                    { text:  this.translate('common.created_at'), value: 'created_at', align: 'left', sortable: true },
-                    { text:  this.translate('common.updated_at'), value: 'updated_at', align: 'left', sortable: true },
+                    { text:  this.translate('common.login_date'), value: 'updated_at', align: 'left', sortable: true },
                 ],
                 items: [],
                 totalItems: 0,

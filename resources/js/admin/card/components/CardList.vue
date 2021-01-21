@@ -13,6 +13,7 @@
             <div class="d-flex flex-lg-row flex-sm-column">
                 <div class="flex-grow-1 pa-2">
                     <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_key')" v-model="filters.key"></v-text-field>
+                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_name')" v-model="filters.name"></v-text-field>
                 </div>
             </div>
         </v-card>
@@ -81,6 +82,7 @@
 
                 filters: {
                     key: '',
+                    name:''
                 },
 
                 dialogs: {
@@ -114,6 +116,10 @@
                 const self = this;
                 self.loadCards(()=>{});
             },700),
+            'filters.name':_.debounce(function(){
+                const self = this;
+                self.loadCards(()=>{});
+            },700),
         },
         methods: {
             loadCards(cb) {
@@ -122,6 +128,7 @@
 
                 let params = {
                     key: self.filters.key,
+                    name: self.filters.name,
                     page: self.pagination.page,
                     per_page: self.pagination.itemsPerPage
                 };

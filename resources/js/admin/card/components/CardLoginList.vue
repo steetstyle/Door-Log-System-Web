@@ -11,7 +11,7 @@
                     <h1 style="font-size:50px;"> {{ translate('common.filters')}}</h1>
                     </center>
                     <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_name')"  v-model="filters.name"></v-text-field>
-                    <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_key')" v-model="filters.key"></v-text-field>
+                    <!-- <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_key')" v-model="filters.key"></v-text-field> -->
                     <v-text-field filled prepend-icon="search" v-bind:label="translate('common.filter_by_branch')" v-model="filters.branchName"></v-text-field>
                      <v-btn block @click="clearFilters()" class="specialPrimary lighten-1" dark>
                         {{ translate('common.clear_filters')}}
