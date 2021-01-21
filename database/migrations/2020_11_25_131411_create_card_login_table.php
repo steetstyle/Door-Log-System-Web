@@ -15,7 +15,8 @@ class CreateCardLoginTable extends Migration
     {
         Schema::create('card_login', function (Blueprint $table) {
             $table->id();
-            $table->string('key');
+            
+            $table->string('key')->nullable();
             
             $table->unsignedInteger('branch_id')->nullable();
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');

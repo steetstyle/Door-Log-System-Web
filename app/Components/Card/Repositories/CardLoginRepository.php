@@ -39,7 +39,6 @@ class CardLoginRepository extends BaseRepository
 
         if(array_key_exists('start_date', $params) && $params['start_date']){
             if(key_exists('end_date', $params) && $params['end_date']){
-
                 $query = $query->whereBetween('card_login.updated_at', [$params['start_date']." 00:00:00.000000",$params['end_date']." 23:59:59.000000"]);
             }
             else{
@@ -51,7 +50,6 @@ class CardLoginRepository extends BaseRepository
             $query = $query->join('branches as abranch', 'card_login.branch_id', '=', 'abranch.id')
                             ->where('abranch.tag', 'LIKE', '%'.$params['branchName'].'%');
             $query = $query->select('abranch.tag as branch_name');
-
         }
 
         if(array_key_exists('key', $params) && $params['key']){
@@ -69,11 +67,10 @@ class CardLoginRepository extends BaseRepository
 
             if(array_key_exists('user_id', $params)  && !empty($params['user_id'])){
                 $query = $query->where('users.id', '=', $params['user_id']);
-
+                $query = $query->orWhere('card_login.user_id', '=', $params['user_id']);
             }
 
             $query = $query->select('users.id as user_id', 'users.first_name as first_name', 'users.last_name as last_name');
-
         }
 
 

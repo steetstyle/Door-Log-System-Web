@@ -28,7 +28,7 @@ class User extends Authenticatable
         'name', 'email', 'password','remember_token','permissions','last_login','active','activation_key'
     ];
 
-    protected $visible = ['id','name', 'email', 'password','remember_token','permissions','last_login', 'active'];
+    protected $visible = ['id','name', 'email','remember_token','permissions','last_login', 'active'];
 
 
     /**

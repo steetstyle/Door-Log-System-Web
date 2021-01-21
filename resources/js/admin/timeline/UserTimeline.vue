@@ -305,6 +305,7 @@
                         per_page: self.dialogs.showTimeline.pagination.itemsPerPage
                     };
                 }
+
                 console.log("fenaa",params);
                 axios.get('/admin/cardlogin',{params: params}).then((res) => {
                     let logEvents = [];
