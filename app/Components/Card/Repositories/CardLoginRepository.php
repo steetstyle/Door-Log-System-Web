@@ -106,13 +106,13 @@ class CardLoginRepository extends BaseRepository
             $setting = Setting::create();
         }
 
-        /*   $card = Card::where('branch_id', '=',  $branch->id)
+        $card = Card::where('branch_id', '=',  $branch->id)
                                 ->where('key', '=', $params['key'])->first();
 
-                if($card != null) {
-                    $payload['user_id'] = $card->user_id;
-                }
-        */
+        if($card != null) {
+            $payload['user_id'] = $card->user_id;
+        }
+        
          
         $payload['branch_id'] = $branch->id;
         $payload['key'] = $params['key'];

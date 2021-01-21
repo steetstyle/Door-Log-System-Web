@@ -43,16 +43,15 @@
                             <div class="ml-n1 my-1 d-flex justify-space-between align-content-space-around flex-wrap">
                                 <v-btn @click="item.user != null ? $router.push({name:'cards.edit',params:{key: item.key}}) : $router.push({name:'cards.create',params:{key: item.key}})" class="ma-1" small outlined icon color="info">
                                     <v-icon small>mdi-pencil</v-icon>
-                                
                                 </v-btn>
                                 <v-btn @click="trash(item)" class="ma-1" small outlined icon color="red">
                                     <v-icon small>mdi-delete</v-icon>
                                 </v-btn>
                             </div>
-                            
                         </td>
                         <td>{{ item.id }}</td>
                         <td>{{ item.key }}</td>
+                        <td>{{ item.user != null ? item.user.name : translate('commone.unreleated')  }}</td>
                         <td>{{ convertDateToString( item.created_at) }}</td>
                         <td>{{ convertDateToString( item.updated_at) }}</td>
                     </tr>
@@ -70,6 +69,7 @@
                     { text: this.translate('common.action'), value: false, align: 'left', sortable: false },
                     { text:  this.translate('common.id'), value: 'id', align: 'left', sortable: true },
                     { text:  this.translate('common.key'), value: 'key', align: 'left', sortable: false },
+                    { text:  this.translate('common.name'), value: 'name', align: 'left', sortable: false },
                     { text:  this.translate('common.created_at'), value: 'created_at', align: 'left', sortable: true },
                     { text:  this.translate('common.updated_at'), value: 'updated_at', align: 'left', sortable: true },
                 ],
@@ -128,6 +128,7 @@
 
                 axios.get('/admin/cards',{params: params}).then(function(response) {
                     self.items = response.data.data;
+                    console.log(response.data.data);
                     self.totalItems = response.data.data.total;
                     self.pagination.totalItems = response.data.data.total;
                     (cb || Function)();

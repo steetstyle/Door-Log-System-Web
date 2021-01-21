@@ -100,5 +100,6 @@
         'login_date' => 'Giriş Tarihi',
         'create_day_log' => 'Kayıt Ekle',
         'delete' => 'Sil',
-        'select_cards' => 'Kart Şeçiniz'
+        'select_cards' => 'Kart Şeçiniz',
+        'unreleated' => 'İlişkilendirilmemiş'
     ];

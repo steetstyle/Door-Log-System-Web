@@ -20,6 +20,9 @@ class CreateCardLoginTable extends Migration
             $table->unsignedInteger('branch_id')->nullable();
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
 
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->time('login_time', $precision = 0)->default('08:00:00');
             $table->time('max_late_time', $precision = 0)->default('00:15:00');
             $table->time('exit_time', $precision = 0)->default('17:00:00');

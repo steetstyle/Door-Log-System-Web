@@ -168,7 +168,6 @@
                 };
 
                 axios.get('/admin/cardlogin',{params: params}).then(function(response) {
-                    console.log(response.data.data);
                     self.items = response.data.data;
                     self.totalItems = response.data.data.total;
                     self.pagination.totalItems = response.data.data.total;

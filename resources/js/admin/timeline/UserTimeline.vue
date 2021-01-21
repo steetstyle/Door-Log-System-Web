@@ -276,7 +276,7 @@
             retrieveTimelineListDataFromApi(isFirstRetrieve = false){
 
                 this.filters.userId = this.userId = this.propUserId;
-            
+
                 const self = this;
 
                 let params;
@@ -305,7 +305,7 @@
                         per_page: self.dialogs.showTimeline.pagination.itemsPerPage
                     };
                 }
-
+                console.log("fenaa",params);
                 axios.get('/admin/cardlogin',{params: params}).then((res) => {
                     let logEvents = [];
                     let counter = 0;
