@@ -43,7 +43,6 @@ class CardLoginController extends AdminController
     public function store(Request $request)
     {
         $validate = validator($request->all(),[
-            'key' => 'required',
             'updated_at' => 'required',
             'branch_id' => 'required',
         ]);
@@ -51,7 +50,7 @@ class CardLoginController extends AdminController
         if($validate->fails()) return $this->sendResponseBadRequest($validate->errors()->first());
 
         /** @var CardLogin $cardLogin */
-        $cardLogin = $this->cardLoginRepository->create($request->only('key', 'updated_at', 'branch_id'));
+        $cardLogin = $this->cardLoginRepository->create($request->only('key', 'updated_at', 'branch_id', 'user_id'));
 
         if(!$cardLogin) return $this->sendResponseBadRequest("Failed create.");
         

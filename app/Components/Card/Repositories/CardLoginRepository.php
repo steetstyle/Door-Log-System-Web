@@ -32,22 +32,15 @@ class CardLoginRepository extends BaseRepository
      * @param array $params
      * @return CardLoginRepository[]|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model[]|mixed[]
      */
-    public function index($params, $selectArray = ["*", 'card_login.updated_at as log', "card_login.id as id", 'card_login.key as key', 'card_login.created_at as created_at', 'card_login.updated_at as updated_at', 'card_login.branch_id as branch_id'])
+    public function index($params, $selectArray = ["*", 'card_login.updated_at as log', "card_login.id as id", 'card_login.key as key', 'card_login.created_at as created_at', 'card_login.updated_at as updated_at', 'card_login.branch_id as branch_id', 'card_login.user_id as user_id'])
     {
-        $query = CardLogin::where('card_login.key', '!=' , null);
-
-
-        if(array_key_exists('start_date', $params) && $params['start_date']){
-            if(key_exists('end_date', $params) && $params['end_date']){
-                $query = $query->whereBetween('card_login.updated_at', [$params['start_date']." 00:00:00.000000",$params['end_date']." 23:59:59.000000"]);
-            }
-            else{
-                $query = $query->whereBetween('card_login.updated_at', [$params['start_date']." 00:00:00.000000",$params['start_date']." 23:59:59.000000"]);
-            }
-        }
+       
+             
+        $query = CardLogin::where('card_login.key', '!=' , -1);
+     
 
         if(array_key_exists('branchName', $params) && $params['branchName']){
-            $query = $query->join('branches as abranch', 'card_login.branch_id', '=', 'abranch.id')
+            $query = $query->leftJoin('branches as abranch', 'card_login.branch_id', '=', 'abranch.id')
                             ->where('abranch.tag', 'LIKE', '%'.$params['branchName'].'%');
             $query = $query->select('abranch.tag as branch_name');
         }
@@ -59,18 +52,18 @@ class CardLoginRepository extends BaseRepository
         if(array_key_exists('name', $params) || array_key_exists('user_id', $params)){
             $query = $query
             ->leftJoin('card as acard', 'card_login.key', '=', 'acard.key')
-            ->leftJoin('users', 'users.id', '=', 'acard.user_id');
+            ->leftJoin('users as users', 'users.id', '=', 'acard.user_id');
                             
             if(array_key_exists('name', $params)  && !empty($params['name'])){
                 $query = $query->where('users.name', 'LIKE', "%".$params['name']."%");
             }
 
             if(array_key_exists('user_id', $params)  && !empty($params['user_id'])){
-                $query = $query->where('users.id', '=', $params['user_id']);
-                $query = $query->orWhere('card_login.user_id', '=', $params['user_id']);
+                $query = $query->where('card_login.user_id', '=', $params['user_id']);
             }
 
             $query = $query->select('users.id as user_id', 'users.first_name as first_name', 'users.last_name as last_name');
+
         }
 
 
@@ -103,13 +96,14 @@ class CardLoginRepository extends BaseRepository
             $setting = Setting::create();
         }
 
-        $card = Card::where('branch_id', '=',  $branch->id)
-                                ->where('key', '=', $params['key'])->first();
+        $card = Card::where('key', 'LIKE', '%'.$params['key'].'%')->first();
 
         if($card != null) {
-            $payload['user_id'] = $card->user_id;
+            $card_user = $card->user()->first();
+            if($card_user != null){
+                $payload['user_id'] = $card_user->id;
+            }
         }
-        
          
         $payload['branch_id'] = $branch->id;
         $payload['key'] = $params['key'];

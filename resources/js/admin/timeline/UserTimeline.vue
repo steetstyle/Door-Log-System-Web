@@ -132,7 +132,7 @@
 </template>
 
 <script>
-    import fullCalendar from 'vue-fullcalendar'
+    import fullCalendar from "../../common/vue-fullcalendar";
     export default {
         props: {
             propUserId: {
@@ -141,7 +141,7 @@
         },
 
         components : {
-            'full-calendar': require('vue-fullcalendar')	
+            'full-calendar': fullCalendar
         },
 
         computed:{

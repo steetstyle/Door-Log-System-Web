@@ -18,10 +18,10 @@ window.convertDateToString = function(date) {
         "";
 
     /* return new Date(date)
-                                                                                                                                                        .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
-                                                                                                                                                        .toISOString()
-                                                                                                                                                        .slice(0, 19)
-                                                                                                                                                        .replace("T", " "); */
+                                                                                                                                                                                            .toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+                                                                                                                                                                                            .toISOString()
+                                                                                                                                                                                            .slice(0, 19)
+                                                                                                                                                                                            .replace("T", " "); */
 };
 // If you want to use it in your vue components
 Vue.prototype.translate = require("../VueTranslation/Translation").default.translate;
@@ -75,11 +75,14 @@ import store from "../common/Store";
 import eventBus from "../common/Event";
 import formatters from "../common/Formatters";
 import AxiosAjaxDetct from "../common/AxiosAjaxDetect";
+import fullCalendar from "../common/vue-fullcalendar";
 import moment from "moment";
+moment.locale("tr");
 
 Vue.prototype.moment = moment;
 Vue.use(formatters);
 Vue.use(eventBus);
+Vue.use(fullCalendar);
 
 const admin = new Vue({
     vuetify: new Vuetify({

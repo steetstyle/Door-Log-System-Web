@@ -34,7 +34,7 @@ class CardLogin extends Model
 
 
     /**
-     * returns the users on this branch
+     * returns the Card on this Card Login
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -43,8 +43,18 @@ class CardLogin extends Model
         return $this->belongsTo(Card::class, 'key', 'key');
     }
 
+    /**
+     * returns the Logged User on this Card Login
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function logged_user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
      /**
-     * returns the users on this branch
+     * returns the Branch on this Card Login
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -62,8 +72,15 @@ class CardLogin extends Model
     }
 
     public function getUserAttribute(){
+        
         $query =  $this->card()->first();
-        return $query ? $query->user()->first() : null;
+
+        $query2 = null;
+
+        if($query != null) $query = $query->user()->first();
+        else $query2 = $this->logged_user()->first();
+
+        return $query != null ? $query : ($query2 != null ? $query2 : null);
     }
    
 }

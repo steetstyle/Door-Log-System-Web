@@ -55,8 +55,8 @@
                             </div>
                         </td>
                         <td>{{ item.id }}</td>
-                        <td>{{ item.key }}</td>
-                        <td>{{ item.branch != null ? item.branch.tag : '' }}</td>
+                        <td>{{ item.key != null && item.key.length > 1 ? item.key : 'Elle atanmış' }}</td>
+                        <td>{{ item.branch != null ? item.branch.tag != null && item.branch.tag.length > 0 ? item.branch.tag: 'Elle atanmış' : 'Belirtilmemiş' }}</td>
                         <td>{{ item.user != null  ? item.user.name: '' }}</td>
                         <td>{{ convertDateToString(item.updated_at )}}</td>
                     </tr>

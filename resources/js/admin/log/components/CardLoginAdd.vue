@@ -178,10 +178,13 @@
                 const self = this;
 
                 let payload = {
-                    key: self.key,
+                    key: self.key.key,
+                    user_id: String(self.user_id),
                     updated_at: self.date + " " +  self.time,
-                    branch_id: self.branch,
+                    branch_id: self.branch.id,
                 };
+
+                console.log(payload);
 
                 self.$store.commit('showLoader');
 
